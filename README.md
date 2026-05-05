@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kodra Soluciones - Portafolio y Landing Page Corporativa
 
-## Getting Started
+Este repositorio contiene el código fuente del portafolio digital y *landing page* de **Kodra Soluciones**. Se trata de una aplicación web moderna, rápida y adaptable, diseñada para presentar los servicios de desarrollo web de la agencia, exhibir casos de éxito y captar clientes potenciales de manera automatizada.
 
-First, run the development server:
+## 🚀 Características Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Diseño Web Adaptable (Responsive Design)**
+   - Interfaz fluida que se adapta automáticamente a dispositivos móviles, tablets y monitores de escritorio.
+   - Navegación optimizada mediante un menú interactivo ("hamburguesa") para pantallas pequeñas, garantizando la mejor experiencia de usuario (UX).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Rendimiento y Optimización (SEO Técnico)**
+   - Construida para velocidad extrema utilizando **Vanilla CSS** (sin frameworks pesados), logrando tiempos de carga mínimos.
+   - Implementación de tipografías optimizadas (`Syne` y `DM Sans`) cargadas del lado del servidor para evitar saltos visuales en la página.
+   - Uso de animaciones sutiles (mediante `IntersectionObserver`) que consumen muy pocos recursos del navegador.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. **Captura de Leads y Sistema de Contacto**
+   - Integración nativa de un formulario de contacto seguro.
+   - **Procesamiento Serverless**: Las peticiones de contacto se procesan del lado del servidor ocultando cualquier lógica interna.
+   - **Registro en Base de Datos**: Los prospectos se guardan en una base de datos relacional (PostgreSQL) usando rutas API protegidas y conexiones encriptadas.
+   - **Flujo omnicanal**: Una vez validado y asegurado el registro, el sistema enruta automáticamente al cliente hacia canales de comunicación directa (WhatsApp y Correo Electrónico).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Arquitectura y Stack Tecnológico
 
-## Learn More
+El proyecto utiliza un enfoque Fullstack moderno, garantizando un ecosistema seguro, escalable y mantenible:
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: Next.js (App Router), React.js, HTML5 semántico, CSS3.
+- **Backend / API**: Next.js Serverless Functions (Rutas API).
+- **Base de Datos**: PostgreSQL (Conexión gestionada mediante variables de entorno encriptadas y driver `pg`).
+- **Despliegue**: Optimizado para integrarse de forma continua (CI/CD) a plataformas en la nube (ej. Vercel).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔒 Seguridad
+- **Ocultación de Credenciales**: Toda la infraestructura de conexión, tokens y accesos a bases de datos está delegada a variables de entorno inyectadas en tiempo de despliegue (`.env`). Nunca se exponen detalles sensibles en el cliente ni en el código fuente.
+- **Protección de Rutas**: La ruta de captura de leads sanitiza y verifica la información antes de conectarse a la base de datos externa.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 💻 Desarrollo Local
 
-## Deploy on Vercel
+Para correr este proyecto en un entorno local, sigue los siguientes pasos:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Instalar dependencias**:
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Configurar el entorno**:
+   Crea un archivo `.env.local` en la raíz del proyecto. Deberás solicitar a los administradores las credenciales para la variable de conexión segura de la base de datos:
+   ```env
+   DATABASE_URL="postgresql://<usuario>:<password>@<host>/<database>?sslmode=require"
+   ```
+
+3. **Levantar el servidor**:
+   ```bash
+   npm run dev
+   ```
+   Abre [http://localhost:3000](http://localhost:3000) en el navegador para ver el resultado.
+
+---
+*Desarrollado y mantenido por el equipo de ingeniería de **Kodra Soluciones**.*
