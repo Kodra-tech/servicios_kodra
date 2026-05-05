@@ -16,12 +16,12 @@ export default function Home() {
       (entries) => {
         entries.forEach((e, i) => {
           if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add("visible"), i * 50);
+            setTimeout(() => e.target.classList.add("visible"), i * 80);
             observer.unobserve(e.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.12 }
     );
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
@@ -38,6 +38,7 @@ export default function Home() {
     const msg = formData.mensaje || "Sin mensaje";
 
     try {
+      // Guardar historial en la base de datos (Neon)
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -48,7 +49,7 @@ export default function Home() {
     }
 
     setStatus("Redirigiendo a WhatsApp...");
-    const texto = `Hola, me contacto desde el sitio web.\n\nNombre: ${nombre}\nContacto: ${contacto}\n\nRequerimiento: ${msg}`;
+    const texto = `Hola, me contacto desde tu portafolio.\n\nNombre: ${nombre}\nContacto: ${contacto}\n\nProyecto: ${msg}`;
     window.open(`https://wa.me/5573253518?text=${encodeURIComponent(texto)}`, "_blank");
     
     setTimeout(() => {
@@ -65,14 +66,13 @@ export default function Home() {
         <button 
           className="mobile-toggle" 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-          style={{ position: isMenuOpen ? "fixed" : "relative", right: isMenuOpen ? "1.5rem" : "0" }}
+          aria-label="Abrir menú"
         >
           {isMenuOpen ? "✕" : "☰"}
         </button>
 
         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-          <li><a href="#servicios" onClick={() => setIsMenuOpen(false)}>Soluciones</a></li>
+          <li><a href="#servicios" onClick={() => setIsMenuOpen(false)}>Servicios</a></li>
           <li><a href="#proyectos" onClick={() => setIsMenuOpen(false)}>Proyectos</a></li>
           <li><a href="#contacto" onClick={() => setIsMenuOpen(false)}>Contacto</a></li>
         </ul>
@@ -80,65 +80,52 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-inner reveal">
-          <div className="hero-badge">Disponibilidad Inmediata</div>
+          <div className="hero-badge">Disponible para proyectos</div>
           <h1>
-            Ingeniería & <br />
-            <span className="line2">Diseño Web</span>
+            Desarrollo Web<br />
+            <span className="line2">Profesional</span>
           </h1>
           <p className="hero-sub">
-            Creamos experiencias digitales de alto impacto. <span>Kodra Soluciones</span> transforma la visión de tu empresa en plataformas robustas, escalables y visualmente impecables.
+            Construimos páginas web y sistemas para <span>negocios locales</span> — rápidas, modernas y con base de datos incluida. Basados en <span>México</span>.
           </p>
           <div className="hero-ctas">
-            <a href="#contacto" className="btn btn-primary">Iniciar Proyecto</a>
-            <a href="#proyectos" className="btn btn-ghost">Explorar Portafolio</a>
+            <a href="#proyectos" className="btn btn-primary">Ver proyectos</a>
+            <a href="#contacto" className="btn btn-ghost">Contáctanos</a>
           </div>
         </div>
       </section>
 
-      <section id="servicios">
+      <section className="servicios" id="servicios">
         <div className="section-inner">
-          <div className="section-header reveal">
-            <div>
-              <div className="section-label">Qué hacemos</div>
-              <h2 className="section-title">Nuestras Soluciones</h2>
-            </div>
-          </div>
-          
-          <div className="editorial-list">
-            <div className="editorial-item reveal">
-              <div className="editorial-num">01</div>
-              <div>
-                <h3>Presencia Corporativa</h3>
-                <p className="editorial-desc">Diseño y desarrollo de sitios web institucionales con arquitectura SEO y máxima velocidad de carga.</p>
-              </div>
-              <div className="editorial-meta">Desde $2,500 MXN</div>
+          <div className="section-label reveal">Lo que ofrecemos</div>
+          <h2 className="section-title reveal">Nuestros Servicios</h2>
+          <div className="servicios-grid">
+            <div className="servicio-card reveal">
+              <div className="servicio-num">01</div>
+              <h3>Página web corporativa</h3>
+              <p>Diseño moderno, totalmente adaptable a móviles y optimizado para Google. Ideal para posicionar tu marca en internet.</p>
+              <div className="servicio-precio">desde $2,500 MXN</div>
             </div>
 
-            <div className="editorial-item reveal">
-              <div className="editorial-num">02</div>
-              <div>
-                <h3>Sistemas Web Custom</h3>
-                <p className="editorial-desc">Aplicaciones a la medida, paneles administrativos, puntos de venta y automatización de procesos internos.</p>
-              </div>
-              <div className="editorial-meta">Desde $3,500 MXN</div>
+            <div className="servicio-card reveal">
+              <div className="servicio-num">02</div>
+              <h3>Menú digital y catálogos</h3>
+              <p>Muestra tus productos en línea a través de códigos QR. Tus clientes lo ven desde el celular y tú puedes actualizarlo fácilmente.</p>
+              <div className="servicio-precio">desde $800 MXN</div>
             </div>
 
-            <div className="editorial-item reveal">
-              <div className="editorial-num">03</div>
-              <div>
-                <h3>Menús Interactivos (QR)</h3>
-                <p className="editorial-desc">Catálogos digitales auto-administrables para restaurantes y tiendas, sin requerir instalaciones extra.</p>
-              </div>
-              <div className="editorial-meta">Desde $800 MXN</div>
+            <div className="servicio-card reveal">
+              <div className="servicio-num">03</div>
+              <h3>Sistemas a la medida</h3>
+              <p>Soluciones con bases de datos como agendas de citas, puntos de venta básicos o portales de gestión para tu negocio.</p>
+              <div className="servicio-precio">desde $3,500 MXN</div>
             </div>
 
-            <div className="editorial-item reveal">
-              <div className="editorial-num">04</div>
-              <div>
-                <h3>Landing Pages / Embudos</h3>
-                <p className="editorial-desc">Páginas de aterrizaje de ultra-conversión diseñadas específicamente para campañas publicitarias.</p>
-              </div>
-              <div className="editorial-meta">Desde $1,800 MXN</div>
+            <div className="servicio-card reveal">
+              <div className="servicio-num">04</div>
+              <h3>Landing page de ventas</h3>
+              <p>Página estructurada para vender un producto específico y generar conversiones rápidas conectadas a WhatsApp o formularios.</p>
+              <div className="servicio-precio">desde $1,800 MXN</div>
             </div>
           </div>
         </div>
@@ -146,95 +133,89 @@ export default function Home() {
 
       <section id="proyectos">
         <div className="section-inner">
-          <div className="section-header reveal">
-            <div>
-              <div className="section-label">Casos de Éxito</div>
-              <h2 className="section-title">Trabajos Recientes</h2>
-            </div>
-          </div>
-
-          <div className="proyectos-list">
-            <div className="project-item reveal">
-              <div className="project-info">
-                <h3>Plataforma Clínica</h3>
-                <div className="tags-list">
-                  <span className="tag">SaaS</span>
-                  <span className="tag">PostgreSQL</span>
+          <div className="section-label reveal">Nuestro trabajo</div>
+          <h2 className="section-title reveal">Casos de Éxito</h2>
+          <div className="proyectos-grid">
+            <div className="proyecto-card reveal">
+              <div>
+                <div className="proyecto-tags">
                   <span className="tag">Next.js</span>
+                  <span className="tag">PostgreSQL</span>
+                  <span className="tag">Fullstack</span>
                 </div>
-                <p>Sistema integral para la gestión de agendas, historiales médicos y control de acceso. Reduce el ausentismo mediante recordatorios automatizados.</p>
-                <a href="#" className="editorial-link">Explorar Caso →</a>
+                <h3>Sistema de reservas — Consultorio</h3>
+                <p>Plataforma para agendar citas automatizadas. El sistema envía notificaciones, guarda el historial médico y permite al doctor gestionar todo desde un panel privado.</p>
+                <a href="#" className="proyecto-link">Ver demostración →</a>
               </div>
-              <div className="project-visual">🏥</div>
+              <div className="proyecto-mockup">🦷</div>
             </div>
 
-            <div className="project-item reveal">
-              <div className="project-info">
-                <h3>Kiosco Digital Gastronómico</h3>
-                <div className="tags-list">
-                  <span className="tag">PWA</span>
+            <div className="proyecto-card reveal">
+              <div>
+                <div className="proyecto-tags">
                   <span className="tag">React</span>
-                  <span className="tag">UX</span>
+                  <span className="tag">QR</span>
+                  <span className="tag">Móvil</span>
                 </div>
-                <p>Menú en tiempo real que permite gestionar inventarios, actualizar precios y capturar órdenes al instante a través de tecnología QR.</p>
-                <a href="#" className="editorial-link">Explorar Caso →</a>
+                <h3>Menú inteligente para Restaurante</h3>
+                <p>Una experiencia web súper ligera donde los comensales escanean un código QR para explorar el menú actualizado en tiempo real sin instalar aplicaciones.</p>
+                <a href="#" className="proyecto-link">Ver demostración →</a>
               </div>
-              <div className="project-visual">🥂</div>
+              <div className="proyecto-mockup">🍔</div>
             </div>
 
-            <div className="project-item reveal">
-              <div className="project-info">
-                <h3>E-Commerce de Lujo</h3>
-                <div className="tags-list">
-                  <span className="tag">B2C</span>
-                  <span className="tag">Stripe</span>
-                  <span className="tag">Performance</span>
+            <div className="proyecto-card reveal">
+              <div>
+                <div className="proyecto-tags">
+                  <span className="tag">HTML/CSS</span>
+                  <span className="tag">SEO</span>
+                  <span className="tag">Ventas</span>
                 </div>
-                <p>Tienda en línea de alta conversión con un enfoque en diseño minimalista y pasarelas de pago integradas para el sector de la moda.</p>
-                <a href="#" className="editorial-link">Explorar Caso →</a>
+                <h3>Landing page — Salón de Belleza</h3>
+                <p>Página enfocada en conversiones. Atrae tráfico local, muestra galerías interactivas y facilita la reserva de servicios a través de WhatsApp de forma directa.</p>
+                <a href="#" className="proyecto-link">Ver demostración →</a>
               </div>
-              <div className="project-visual">✨</div>
+              <div className="proyecto-mockup">💇</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="skills">
+      <section className="skills" id="skills">
         <div className="section-inner">
-          <div className="section-header reveal">
-            <div>
-              <div className="section-label">Ecosistema Técnico</div>
-              <h2 className="section-title">Stack Tecnológico</h2>
-            </div>
-          </div>
-          
-          <div className="skills-container reveal">
-            <span className="skill-chip">React.js</span>
-            <span className="skill-chip">Next.js</span>
-            <span className="skill-chip">TypeScript</span>
-            <span className="skill-chip">PostgreSQL</span>
-            <span className="skill-chip">Node.js</span>
-            <span className="skill-chip">Vercel</span>
-            <span className="skill-chip">Tailwind CSS</span>
-            <span className="skill-chip">Figma</span>
-            <span className="skill-chip">GraphQL</span>
-            <span className="skill-chip">Git</span>
+          <div className="section-label reveal">Ecosistema Tecnológico</div>
+          <h2 className="section-title reveal">Tecnologías</h2>
+          <div className="skills-grid">
+            <div className="skill-pill featured reveal">Next.js</div>
+            <div className="skill-pill featured reveal">React</div>
+            <div className="skill-pill featured reveal">JavaScript</div>
+            <div className="skill-pill featured reveal">Node.js</div>
+            <div className="skill-pill featured reveal">PostgreSQL</div>
+            <div className="skill-pill reveal">HTML5 / CSS3</div>
+            <div className="skill-pill reveal">Vercel</div>
+            <div className="skill-pill reveal">Git / GitHub</div>
+            <div className="skill-pill reveal">APIs REST</div>
+            <div className="skill-pill reveal">Diseño Adaptativo</div>
+            <div className="skill-pill reveal">SEO Técnico</div>
           </div>
         </div>
       </section>
 
       <section id="contacto">
         <div className="section-inner">
-          <div className="contacto-grid">
-            <div className="contact-info reveal">
-              <h3>Iniciemos una conversación.</h3>
-              <p>Agenda una consulta gratuita para descubrir cómo nuestra tecnología puede escalar tu negocio.</p>
-              <div className="contact-links">
-                <a href="https://wa.me/5573253518" target="_blank" rel="noreferrer">
-                  <span>Whatsapp</span> ↗
+          <div className="contacto-inner">
+            <div className="contacto-text reveal">
+              <div className="section-label">Hablemos</div>
+              <h2>¿Tienes un proyecto en mente?</h2>
+              <p>Envíanos los detalles. Nuestro equipo te responderá a la brevedad para asesorarte y ofrecerte la mejor solución tecnológica para tu negocio.</p>
+              <div className="contacto-links">
+                <a href="https://wa.me/5573253518" className="contacto-link" target="_blank" rel="noreferrer">
+                  <div className="link-icon">📱</div>
+                  <span>WhatsApp — Contacto Inmediato</span>
                 </a>
-                <a href="mailto:castro@ekrontech.com">
-                  <span>castro@ekrontech.com</span> ↗
+                <a href="mailto:castro@ekrontech.com" className="contacto-link">
+                  <div className="link-icon">✉️</div>
+                  <span>castro@ekrontech.com</span>
                 </a>
               </div>
             </div>
@@ -242,38 +223,38 @@ export default function Home() {
             <div className="contact-form reveal">
               <form onSubmit={enviarWA}>
                 <div className="form-group">
-                  <label>Organización / Nombre</label>
+                  <label>Tu Nombre o Empresa</label>
                   <input 
                     type="text" 
-                    placeholder="Escribe tu nombre o empresa" 
+                    placeholder="Ej. Juan Pérez - Negocio X" 
                     value={formData.nombre}
                     onChange={(e) => setFormData({...formData, nombre: e.target.value})}
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label>Método de contacto</label>
+                  <label>WhatsApp o Correo de contacto</label>
                   <input 
                     type="text" 
-                    placeholder="Teléfono o Correo Electrónico" 
+                    placeholder="Ej. +52 55 1234 5678" 
                     value={formData.contacto}
                     onChange={(e) => setFormData({...formData, contacto: e.target.value})}
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label>Resumen del Proyecto</label>
+                  <label>Cuéntanos sobre tu proyecto</label>
                   <textarea 
-                    placeholder="Cuéntanos sobre los objetivos que buscas alcanzar..."
+                    placeholder="Quiero mejorar mi presencia web, requiero un sistema para..."
                     value={formData.mensaje}
                     onChange={(e) => setFormData({...formData, mensaje: e.target.value})}
                     required
                   ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary" style={{ width: "100%", marginTop: "1rem" }} disabled={status === "Enviando..."}>
-                  {status ? status : "Enviar Solicitud"}
+                <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} disabled={status === "Enviando..."}>
+                  {status ? status : "Enviar a Kodra Soluciones →"}
                 </button>
-                <p className="form-note">Garantizamos total confidencialidad sobre tu idea.</p>
+                <p className="form-note">Tus datos están seguros. Se guardará tu solicitud y se abrirá WhatsApp para agilizar la comunicación.</p>
               </form>
             </div>
           </div>
@@ -281,7 +262,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <p>Kodra Soluciones © {new Date().getFullYear()} — Ingeniería Web & Diseño Estratégico.</p>
+        <p>Kodra Soluciones — Potenciando negocios con tecnología · <span>{new Date().getFullYear()}</span></p>
       </footer>
     </>
   );
