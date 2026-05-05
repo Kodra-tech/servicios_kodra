@@ -147,7 +147,18 @@ export default function Home() {
                 <p>Plataforma para agendar citas automatizadas. El sistema envía notificaciones, guarda el historial médico y permite al doctor gestionar todo desde un panel privado.</p>
                 <a href="#" className="proyecto-link">Ver demostración →</a>
               </div>
-              <div className="proyecto-mockup">🦷</div>
+              <div className="proyecto-mockup">
+                <div className="mockup-header">
+                  <span className="mockup-dot"></span>
+                  <span className="mockup-dot"></span>
+                  <span className="mockup-dot"></span>
+                </div>
+                <div className="mockup-body">
+                  <div className="mockup-line" style={{ width: "60%" }}></div>
+                  <div className="mockup-line" style={{ width: "80%" }}></div>
+                  <div className="mockup-box"></div>
+                </div>
+              </div>
             </div>
 
             <div className="proyecto-card reveal">
@@ -161,7 +172,18 @@ export default function Home() {
                 <p>Una experiencia web súper ligera donde los comensales escanean un código QR para explorar el menú actualizado en tiempo real sin instalar aplicaciones.</p>
                 <a href="#" className="proyecto-link">Ver demostración →</a>
               </div>
-              <div className="proyecto-mockup">🍔</div>
+              <div className="proyecto-mockup">
+                <div className="mockup-header">
+                  <span className="mockup-dot"></span>
+                  <span className="mockup-dot"></span>
+                  <span className="mockup-dot"></span>
+                </div>
+                <div className="mockup-body">
+                  <div className="mockup-line" style={{ width: "40%" }}></div>
+                  <div className="mockup-line" style={{ width: "90%" }}></div>
+                  <div className="mockup-box"></div>
+                </div>
+              </div>
             </div>
 
             <div className="proyecto-card reveal">
@@ -175,7 +197,18 @@ export default function Home() {
                 <p>Página enfocada en conversiones. Atrae tráfico local, muestra galerías interactivas y facilita la reserva de servicios a través de WhatsApp de forma directa.</p>
                 <a href="#" className="proyecto-link">Ver demostración →</a>
               </div>
-              <div className="proyecto-mockup">💇</div>
+              <div className="proyecto-mockup">
+                <div className="mockup-header">
+                  <span className="mockup-dot"></span>
+                  <span className="mockup-dot"></span>
+                  <span className="mockup-dot"></span>
+                </div>
+                <div className="mockup-body">
+                  <div className="mockup-line" style={{ width: "70%" }}></div>
+                  <div className="mockup-line" style={{ width: "50%" }}></div>
+                  <div className="mockup-box"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
