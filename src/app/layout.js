@@ -12,7 +12,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "Dev Portfolio — Tu Nombre",
+  title: "Kodra Soluciones",
   description: "Portafolio de servicios de desarrollo web",
 };
 

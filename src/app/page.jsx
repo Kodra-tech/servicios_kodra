@@ -50,7 +50,7 @@ export default function Home() {
     setStatus("Redirigiendo a WhatsApp...");
     const texto = `Hola, me contacto desde tu portafolio.\n\nNombre: ${nombre}\nContacto: ${contacto}\n\nProyecto: ${msg}`;
     // Cambia TUNUMERO por el número real
-    window.open("https://wa.me/521TUNUMERO?text=" + encodeURIComponent(texto), "_blank");
+    window.open(`https://wa.me/5573253518?text=${encodeURIComponent(texto)}`, "_blank");
     
     setTimeout(() => {
       setStatus("");
@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <>
       <nav>
-        <div className="nav-logo">TuNombre.dev</div>
+        <div className="nav-logo">Kodra Soluciones</div>
         <ul className="nav-links">
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
