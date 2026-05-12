@@ -249,9 +249,9 @@ export default function Home() {
                   <div className="link-icon">📱</div>
                   <span>WhatsApp — Contacto Inmediato</span>
                 </a>
-                <a href="mailto:castro@ekrontech.com" className="contacto-link">
+                <a href="mailto:kodratech@proton.me" className="contacto-link">
                   <div className="link-icon">✉️</div>
-                  <span>castro@ekrontech.com</span>
+                  <span>kodratech@proton.me</span>
                 </a>
               </div>
             </div>
