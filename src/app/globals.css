@@ -369,3 +369,29 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--muted); font-size:
 .food-card:hover .food-add { background: var(--accent); color: white; }
 .floating-badge { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 0.6rem 1.2rem; border-radius: 100px; font-size: 0.85rem; font-weight: 700; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); animation: bounceSoft 2s infinite; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; z-index: 10;}
 @keyframes bounceSoft { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -5px); } }
+
+/* MOCKUP LANDING PAGE (SALON DE BELLEZA) */
+.landing-browser-mockup { width: 100%; max-width: 440px; height: 400px; background: var(--bg2); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); display: flex; flex-direction: column; overflow: hidden; position: relative; margin: 0 auto; }
+.browser-top { background: var(--bg3); padding: 0.8rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+.browser-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--border); }
+.browser-dot.r { background: #ef4444; }
+.browser-dot.y { background: #f59e0b; }
+.browser-dot.g { background: #10b981; }
+.browser-url { background: var(--bg); border: 1px solid var(--border); flex: 1; margin-left: 1rem; border-radius: 6px; padding: 0.3rem 1rem; font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; font-family: monospace;}
+.browser-body { flex: 1; overflow-y: auto; background: var(--bg); position: relative; scrollbar-width: none; }
+.browser-body::-webkit-scrollbar { display: none; }
+.spa-hero { height: 200px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 1rem; }
+.spa-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; animation: msgIn 0.8s ease backwards; }
+.spa-sub { font-size: 0.8rem; max-width: 85%; opacity: 0.9; margin-bottom: 1rem; animation: msgIn 0.8s ease backwards; animation-delay: 0.2s; }
+.spa-btn { background: #d946ef; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 100px; font-weight: 700; font-size: 0.8rem; cursor: pointer; animation: msgIn 0.8s ease backwards; animation-delay: 0.4s; box-shadow: 0 4px 10px rgba(217, 70, 239, 0.4);}
+.spa-services { padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 1rem; }
+.spa-section-title { text-align: center; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.spa-service-card { display: flex; align-items: center; gap: 1rem; background: var(--bg2); padding: 0.8rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.2s; cursor: pointer; animation: slideInAppt 0.6s ease backwards;}
+.spa-service-card:nth-child(2) { animation-delay: 0.2s; }
+.spa-service-card:nth-child(3) { animation-delay: 0.4s; }
+.spa-service-card:hover { transform: translateY(-2px); border-color: #d946ef; }
+.spa-s-img { width: 60px; height: 60px; border-radius: 8px; background-size: cover; background-position: center; }
+.spa-s-info { flex: 1; }
+.spa-s-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem;}
+.spa-s-desc { font-size: 0.7rem; color: var(--muted); }
+.spa-s-price { font-weight: 800; color: #d946ef; font-size: 0.95rem; }
