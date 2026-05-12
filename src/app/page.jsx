@@ -9,6 +9,7 @@ export default function Home() {
   });
   const [status, setStatus] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isReservaModalOpen, setIsReservaModalOpen] = useState(false);
 
   useEffect(() => {
     // Animaciones de entrada con IntersectionObserver
@@ -145,7 +146,7 @@ export default function Home() {
                 </div>
                 <h3>Sistema de reservas — Consultorio</h3>
                 <p>Plataforma para agendar citas automatizadas. El sistema envía notificaciones, guarda el historial médico y permite al doctor gestionar todo desde un panel privado.</p>
-                <a href="#" className="proyecto-link">Ver demostración →</a>
+                <button onClick={(e) => { e.preventDefault(); setIsReservaModalOpen(true); }} className="proyecto-link" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}>Ver demostración interactiva →</button>
               </div>
               <div className="proyecto-mockup dashboard-mockup">
                 <div className="mockup-sidebar">
@@ -298,6 +299,93 @@ export default function Home() {
       <footer>
         <p>Kodra Soluciones — Potenciando negocios con tecnología · <span>{new Date().getFullYear()}</span></p>
       </footer>
+
+      {/* MODAL SISTEMA DE RESERVAS */}
+      <div className={`modal-overlay ${isReservaModalOpen ? "open" : ""}`} onClick={() => setIsReservaModalOpen(false)}>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <button className="modal-close" onClick={() => setIsReservaModalOpen(false)}>✕</button>
+          
+          <div className="modal-left">
+            <span className="modal-badge">🔥 Alta Conversión</span>
+            <h2 className="modal-title">El motor de citas que <span>multiplica</span> tus consultas</h2>
+            <p className="modal-pain">
+              ¿Pierdes pacientes por no contestar WhatsApp a tiempo? ¿Tu asistente pasa horas cuadrando horarios?
+            </p>
+            <p style={{ color: "var(--muted)", fontSize: "0.95rem", lineHeight: "1.6" }}>
+              Presentamos el sistema automatizado 24/7 diseñado para consultorios de alto flujo. Tus pacientes agendan solos, el sistema confirma y tú solo te dedicas a dar consulta.
+            </p>
+            
+            <ul className="modal-benefits">
+              <li><strong>Recupera hasta 15 horas a la semana:</strong> Adiós a las llamadas para reagendar.</li>
+              <li><strong>Cero inasistencias:</strong> Recordatorios automáticos por WhatsApp y correo.</li>
+              <li><strong>Control total desde tu celular:</strong> Revisa tu agenda en tiempo real, estés donde estés.</li>
+            </ul>
+
+            <div className="modal-cta-container">
+              <a href="https://wa.me/5573253518?text=Hola,%20me%20interesa%20implementar%20el%20Sistema%20de%20Reservas%20en%20mi%20consultorio." target="_blank" rel="noreferrer" className="btn-pulse">
+                Implementar en mi Consultorio Hoy
+              </a>
+              <p className="modal-scarcity">
+                Atención personalizada: Solo implementamos 3 sistemas nuevos por mes.
+              </p>
+            </div>
+          </div>
+
+          <div className="modal-right">
+            <div className="interactive-mockup">
+              <div className="im-header">
+                <span className="im-title">Dr. Admin Panel</span>
+                <span className="im-status">● En línea</span>
+              </div>
+              <div className="im-body">
+                <div className="im-stat-cards">
+                  <div className="im-card">
+                    <div className="im-card-label">Citas Hoy</div>
+                    <div className="im-card-value">14</div>
+                  </div>
+                  <div className="im-card">
+                    <div className="im-card-label">Ingresos Est.</div>
+                    <div className="im-card-value">$8,500</div>
+                  </div>
+                </div>
+                
+                <div className="im-appointments">
+                  <div className="im-appt-title">Próximos Pacientes</div>
+                  <div className="im-appt">
+                    <div className="im-appt-info">
+                      <span className="im-appt-name">Ana M. (Primera vez)</span>
+                      <span className="im-appt-time">🕒 10:00 AM • Confirmado</span>
+                    </div>
+                    <div className="im-appt-action">✓</div>
+                  </div>
+                  <div className="im-appt">
+                    <div className="im-appt-info">
+                      <span className="im-appt-name">Carlos R. (Seguimiento)</span>
+                      <span className="im-appt-time">🕒 10:45 AM • Confirmado</span>
+                    </div>
+                    <div className="im-appt-action">✓</div>
+                  </div>
+                  <div className="im-appt">
+                    <div className="im-appt-info">
+                      <span className="im-appt-name">Lucía T. (Limpieza)</span>
+                      <span className="im-appt-time">🕒 11:30 AM • Pendiente</span>
+                    </div>
+                    <div className="im-appt-action" style={{ background: "rgba(245, 158, 11, 0.1)", color: "#f59e0b" }}>⌛</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="floating-notification">
+              <div className="fn-icon">🔔</div>
+              <div className="fn-content">
+                <span className="fn-text">¡Nueva cita agendada!</span>
+                <span className="fn-sub">Paciente: Roberto G. para Mañana 4:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
