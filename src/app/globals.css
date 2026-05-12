@@ -303,3 +303,43 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--muted); font-size:
   .modal-left { padding: 2.5rem 1.5rem; flex: none; }
   .modal-title { font-size: 1.8rem; }
 }
+
+/* TOUR TABS */
+.tour-nav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: var(--bg3); padding: 0.4rem; border-radius: 100px; }
+.tour-tab { flex: 1; text-align: center; padding: 0.6rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.3s; border: none; background: transparent; font-family: var(--font-body); }
+.tour-tab.active { background: var(--bg2); color: var(--text); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* MOCKUP 2: PATIENT (MOBILE) */
+.patient-mockup { width: 100%; max-width: 280px; height: 450px; background: var(--bg); border-radius: 30px; border: 8px solid var(--text); box-shadow: 0 20px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow: hidden; position: relative; margin: 0 auto; }
+.pm-header { background: #075e54; color: white; padding: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+.pm-avatar { width: 32px; height: 32px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #075e54; font-weight: bold; }
+.pm-name { font-weight: 600; font-size: 0.9rem; }
+.pm-body { padding: 1rem; flex: 1; background: #e5ddd5; display: flex; flex-direction: column; gap: 1rem; }
+.pm-msg { background: white; padding: 0.8rem; border-radius: 0 12px 12px 12px; font-size: 0.8rem; color: #333; max-width: 85%; animation: msgIn 0.5s ease backwards; }
+.pm-msg.out { background: #dcf8c6; border-radius: 12px 0 12px 12px; align-self: flex-end; animation-delay: 0.8s; }
+.pm-msg.btn-list { display: flex; flex-direction: column; gap: 0.5rem; animation-delay: 1.6s; }
+.pm-action { background: #f0f0f0; border: none; padding: 0.5rem; border-radius: 6px; font-weight: 600; color: #075e54; cursor: pointer; }
+
+@keyframes msgIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* MOCKUP 3: ADAPTABILITY (SETTINGS) */
+.settings-mockup { width: 100%; max-width: 400px; background: var(--bg2); border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; margin: 0 auto; }
+.sm-header { padding: 1.2rem; border-bottom: 1px solid var(--border); background: var(--bg); font-weight: 800; font-family: var(--font-display); font-size: 1.1rem;}
+.sm-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.sm-group { display: flex; flex-direction: column; gap: 0.8rem; }
+.sm-label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;}
+.sm-color-picker { display: flex; gap: 1rem; }
+.sm-color { width: 36px; height: 36px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: transform 0.2s; }
+.sm-color:hover { transform: scale(1.1); }
+.sm-color.active { border-color: var(--text); transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.sm-toggle-row { display: flex; justify-content: space-between; align-items: center; background: var(--bg); padding: 1rem; border-radius: 12px; border: 1px solid var(--border); animation: slideInAppt 0.4s ease backwards; font-weight: 600; font-size: 0.9rem;}
+.sm-toggle-row:nth-child(2) { animation-delay: 0.2s; }
+.sm-toggle-row:nth-child(3) { animation-delay: 0.4s; }
+.sm-toggle { width: 44px; height: 24px; background: #22c55e; border-radius: 20px; position: relative; }
+.sm-toggle::after { content: ''; position: absolute; right: 2px; top: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.sm-toggle.off { background: var(--muted); }
+.sm-toggle.off::after { right: auto; left: 2px; }
+
+/* Fade transitions for mockups */
+.fade-enter { animation: fadeIn 0.4s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
