@@ -98,6 +98,14 @@ export default function MenuModal({ isOpen, onClose }) {
               🛒 Ver orden (2) - $405.00
             </div>
           </div>
+          <div className="mobile-cta-container">
+            <a href="https://wa.me/5573253518?text=Hola,%20me%20interesa%20implementar%20el%20Menú%20Digital%20QR%20en%20mi%20restaurante." target="_blank" rel="noreferrer" className="btn-pulse">
+              Digitalizar mi Menú Hoy
+            </a>
+            <p className="modal-scarcity">
+              🎁 Oferta: Contrata esta semana y te regalamos 10 displays acrílicos de mesa con tu QR listo para escanear.
+            </p>
+          </div>
         </div>
       </div>
     </div>

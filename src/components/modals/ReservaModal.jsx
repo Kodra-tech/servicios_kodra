@@ -177,6 +177,14 @@ export default function ReservaModal({ isOpen, onClose }) {
               </div>
             </div>
           )}
+          <div className="mobile-cta-container">
+            <a href="https://wa.me/5573253518?text=Hola,%20me%20interesa%20implementar%20el%20Sistema%20de%20Reservas%20en%20mi%20consultorio." target="_blank" rel="noreferrer" className="btn-pulse">
+              Implementar en mi Consultorio Hoy
+            </a>
+            <p className="modal-scarcity">
+              Atención personalizada: Solo implementamos 3 sistemas nuevos por mes.
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -85,6 +85,14 @@ export default function LandingModal({ isOpen, onClose }) {
               </div>
             </div>
           </div>
+          <div className="mobile-cta-container">
+            <a href="https://wa.me/5573253518?text=Hola,%20me%20interesa%20crear%20una%20Landing%20Page%20para%20mi%20negocio." target="_blank" rel="noreferrer" className="btn-pulse" style={{ background: "#d946ef", boxShadow: "0 0 0 0 rgba(217, 70, 239, 0.7)"}}>
+              Quiero mi Landing Page
+            </a>
+            <p className="modal-scarcity">
+              🎁 Bono de Acción Rápida: Logotipo Básico y alta en Google Mi Negocio GRATIS si iniciamos hoy.
+            </p>
+          </div>
         </div>
       </div>
     </div>
