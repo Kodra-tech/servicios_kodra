@@ -96,7 +96,7 @@ export default function ContactSection() {
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} disabled={status === "Enviando..."}>
-                {status ? status : "Enviar a Kodra Soluciones →"}
+                {status ? status : "Enviar a kodra →"}
               </button>
               <p className="form-note">Tus datos están seguros. Se guardará tu solicitud y se abrirá WhatsApp para agilizar la comunicación.</p>
             </form>

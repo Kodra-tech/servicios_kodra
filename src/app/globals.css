@@ -1,19 +1,21 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* LIGHT MODE (Predeterminado - Amigable) */
-  --bg: #f8fafc;
+  /* LIGHT MODE — Carmín */
+  --bg: #fafafa;
   --bg2: #ffffff;
-  --bg3: #f1f5f9;
-  --bg-nav: rgba(248, 250, 252, 0.85);
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: rgba(15, 23, 42, 0.08);
-  --accent: #3b82f6; /* Azul amable */
-  --accent-soft: rgba(59, 130, 246, 0.1);
-  --btn-bg: #3b82f6;
+  --bg3: #f5f5f5;
+  --bg-nav: rgba(250, 250, 250, 0.85);
+  --text: #0d0d14;
+  --muted: #6b7280;
+  --border: rgba(13, 13, 20, 0.08);
+  --accent: #E8003A;
+  --accent-hover: #B8002D;
+  --accent-ui: #FF3D6B;
+  --accent-soft: rgba(232, 0, 58, 0.1);
+  --btn-bg: #E8003A;
   --btn-text: #ffffff;
-  --hover-bg: #f1f5f9;
+  --hover-bg: #f5f5f5;
   
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
@@ -24,19 +26,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* DARK MODE */
-    --bg: #0a0a0f;
-    --bg2: #111118;
-    --bg3: #1a1a24;
-    --bg-nav: rgba(10, 10, 15, 0.85);
-    --text: #f0f0f8;
+    --bg: #0D0D14;
+    --bg2: #16161f;
+    --bg3: #1f1f2b;
+    --bg-nav: rgba(13, 13, 20, 0.85);
+    --text: #F0F0F8;
     --muted: #94a3b8;
-    --border: rgba(255, 255, 255, 0.07);
-    --accent: #60a5fa; /* Azul claro amigable */
-    --accent-soft: rgba(96, 165, 250, 0.1);
-    --btn-bg: #60a5fa;
-    --btn-text: #0a0a0f;
-    --hover-bg: #1a1a24;
+    --border: rgba(240, 240, 248, 0.07);
+    --accent: #E8003A;
+    --accent-hover: #B8002D;
+    --accent-ui: #FF3D6B;
+    --accent-soft: rgba(232, 0, 58, 0.15);
+    --btn-bg: #E8003A;
+    --btn-text: #F0F0F8;
+    --hover-bg: #1f1f2b;
     --shadow: 0 10px 30px -5px rgba(0,0,0,0.3);
   }
 }
@@ -59,7 +62,7 @@ nav {
   background: var(--bg-nav); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
   transition: all 0.3s ease;
 }
-.nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--accent); letter-spacing: -0.02em; z-index: 101; }
+.nav-logo { display: flex; align-items: center; gap: 10px; z-index: 101; }
 .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
 .nav-links a:hover { color: var(--text); }
@@ -246,12 +249,12 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--muted); font-size:
 .modal-benefits li::before { content: '✓'; color: var(--accent); font-weight: 800; background: var(--accent-soft); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9rem;}
 
 .modal-cta-container { margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 1rem; }
-.btn-pulse { background: var(--btn-bg); color: var(--btn-text); padding: 1.2rem 2rem; border-radius: 100px; font-weight: 700; font-size: 1.1rem; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); animation: pulse-btn 2s infinite; transition: transform 0.2s; display: inline-block; width: 100%;}
+.btn-pulse { background: var(--btn-bg); color: var(--btn-text); padding: 1.2rem 2rem; border-radius: 100px; font-weight: 700; font-size: 1.1rem; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 0 0 0 rgba(232, 0, 58, 0.5); animation: pulse-btn 2s infinite; transition: transform 0.2s; display: inline-block; width: 100%;}
 .btn-pulse:hover { transform: translateY(-3px); }
 @keyframes pulse-btn {
-  0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-  70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(59, 130, 246, 0); }
-  100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+  0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(232, 0, 58, 0.3); }
+  70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(232, 0, 58, 0); }
+  100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(232, 0, 58, 0); }
 }
 .modal-scarcity { font-size: 0.85rem; color: var(--text); font-weight: 500; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
 .modal-scarcity::before { content: ''; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; animation: blink 1.5s infinite; }
@@ -288,7 +291,7 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--muted); font-size:
   to { opacity: 1; transform: translateX(0); }
 }
 
-.floating-notification { position: absolute; bottom: 30px; right: 30px; background: var(--bg2); padding: 1rem 1.2rem; border-radius: 16px; border: 1px solid var(--accent); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2); display: flex; align-items: center; gap: 1rem; animation: floatUp 5s infinite; z-index: 10; backdrop-filter: blur(8px); }
+.floating-notification { position: absolute; bottom: 30px; right: 30px; background: var(--bg2); padding: 1rem 1.2rem; border-radius: 16px; border: 1px solid var(--accent); box-shadow: 0 15px 35px rgba(232, 0, 58, 0.15); display: flex; align-items: center; gap: 1rem; animation: floatUp 5s infinite; z-index: 10; backdrop-filter: blur(8px); }
 .fn-icon { width: 36px; height: 36px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
 .fn-content { display: flex; flex-direction: column; }
 .fn-text { font-size: 0.85rem; font-weight: 700; }
@@ -400,3 +403,98 @@ footer { padding: 3rem 2rem; text-align: center; color: var(--muted); font-size:
 .spa-s-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem;}
 .spa-s-desc { font-size: 0.7rem; color: var(--muted); }
 .spa-s-price { font-weight: 800; color: #d946ef; font-size: 0.95rem; }
+
+/* ═══════════════════════════════════
+   LOGO KODRA ANIMADO — FASE 1: PUNTOS
+═══════════════════════════════════ */
+.logo{display:flex;align-items:center;gap:12px;user-select:none}
+
+.dot{
+  fill:var(--accent);
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:dotPop 0.32s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.dot-tl{animation-delay:0.00s;opacity:0.9}
+.dot-tr{animation-delay:0.07s;opacity:0.9}
+.dot-bl{animation-delay:0.14s;opacity:0.9}
+.dot-br{animation-delay:0.21s;opacity:0.9}
+.dot-tm{animation-delay:0.28s;opacity:0.45}
+.dot-ml{animation-delay:0.33s;opacity:0.45}
+.dot-mr{animation-delay:0.33s;opacity:0.45}
+.dot-bm{animation-delay:0.38s;opacity:0.45}
+.dot-c {animation-delay:0.46s;opacity:1}
+
+@keyframes dotPop{
+  0%  {transform:scale(0);opacity:0}
+  65% {transform:scale(1.3)}
+  100%{transform:scale(1);opacity:inherit}
+}
+
+/* ═══════════════════════════════════
+   LOGO — FASE 2: LÍNEAS (0.85s)
+═══════════════════════════════════ */
+.ln{
+  fill:none;
+  stroke:var(--accent);
+  stroke-linecap:round;
+  stroke-dasharray:90;
+  stroke-dashoffset:90;
+  animation:lineGrow 0.38s ease forwards;
+}
+.ln-d1{stroke-width:1.5;opacity:0.35;animation-delay:0.85s}
+.ln-d2{stroke-width:1.5;opacity:0.18;animation-delay:0.98s}
+.ln-v {stroke-width:1.0;opacity:0.18;animation-delay:1.06s}
+.ln-h {stroke-width:1.0;opacity:0.18;animation-delay:1.14s}
+
+@keyframes lineGrow{
+  to{stroke-dashoffset:0}
+}
+
+/* ═══════════════════════════════════
+   LOGO — FASE 3: WORDMARK (1.45s)
+═══════════════════════════════════ */
+.logo-text{overflow:hidden;display:flex;flex-direction:column;gap:2px}
+
+.logo-name{
+  font-family:'Inter',var(--font-body);
+  font-weight:500;
+  color:var(--text);
+  letter-spacing:-1.5px;
+  line-height:1;
+  display:block;
+  transform:translateY(110%);
+  opacity:0;
+  animation:nameSlide 0.55s cubic-bezier(0.22,1,0.36,1) 1.45s forwards;
+}
+.logo-sub{
+  font-family:'Inter',var(--font-body);
+  font-size:9px;
+  color:var(--accent);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  display:block;
+  opacity:0;
+  transform:translateY(8px);
+  animation:subFade 0.4s ease 1.78s forwards;
+}
+
+@keyframes nameSlide{
+  to{transform:translateY(0);opacity:1}
+}
+@keyframes subFade{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Tamaños del logo */
+.logo-sm .logo-name{font-size:18px;letter-spacing:-1px}
+.logo-sm .logo-sub{font-size:8px;letter-spacing:2.5px}
+.logo-sm svg{width:26px;height:26px}
+
+.logo-md .logo-name{font-size:28px;letter-spacing:-1.5px}
+.logo-md .logo-sub{font-size:10px;letter-spacing:3px}
+.logo-md svg{width:40px;height:40px}
+
+.logo-lg .logo-name{font-size:42px;letter-spacing:-2.5px}
+.logo-lg .logo-sub{font-size:11px;letter-spacing:4px}
+.logo-lg svg{width:56px;height:56px}

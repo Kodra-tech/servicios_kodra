@@ -153,7 +153,7 @@ export default function ReservaModal({ isOpen, onClose }) {
                 <div className="sm-group">
                   <span className="sm-label">Colores de Marca</span>
                   <div className="sm-color-picker">
-                    <div className="sm-color active" style={{ background: "#3b82f6" }}></div>
+                    <div className="sm-color active" style={{ background: "#E8003A" }}></div>
                     <div className="sm-color" style={{ background: "#10b981" }}></div>
                     <div className="sm-color" style={{ background: "#8b5cf6" }}></div>
                     <div className="sm-color" style={{ background: "#f43f5e" }}></div>

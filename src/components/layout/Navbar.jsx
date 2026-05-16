@@ -6,13 +6,14 @@
 
 "use client";
 import { useState } from "react";
+import AnimatedLogo from "./AnimatedLogo";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav>
-      <div className="nav-logo">Kodra Soluciones</div>
+      <div className="nav-logo"><AnimatedLogo variant="full" size="sm" /></div>
       
       <button 
         className="mobile-toggle" 
