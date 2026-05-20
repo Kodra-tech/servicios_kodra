@@ -7,12 +7,12 @@
 "use client";
 import { useState } from "react";
 import ReservaModal from "../modals/ReservaModal";
-import MenuModal from "../modals/MenuModal";
+import DemoModal from "../modals/DemoModal";
 import LandingModal from "../modals/LandingModal";
 
 export default function ProjectsSection() {
   const [isReservaModalOpen, setIsReservaModalOpen] = useState(false);
-  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isLandingModalOpen, setIsLandingModalOpen] = useState(false);
 
   return (
@@ -68,7 +68,7 @@ export default function ProjectsSection() {
                 <h3>Menú inteligente para Restaurante</h3>
                 <p>Una experiencia web súper ligera donde los comensales escanean un código QR para explorar el menú actualizado en tiempo real sin instalar aplicaciones.</p>
                 <button 
-                  onClick={(e) => { e.preventDefault(); setIsMenuModalOpen(true); }} 
+                  onClick={(e) => { e.preventDefault(); setIsDemoModalOpen(true); }} 
                   className="proyecto-link" 
                   style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}
                 >
@@ -126,7 +126,7 @@ export default function ProjectsSection() {
 
       {/* RENDERIZADO DE MODALES (ENCAPSULADOS) */}
       <ReservaModal isOpen={isReservaModalOpen} onClose={() => setIsReservaModalOpen(false)} />
-      <MenuModal isOpen={isMenuModalOpen} onClose={() => setIsMenuModalOpen(false)} />
+      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
       <LandingModal isOpen={isLandingModalOpen} onClose={() => setIsLandingModalOpen(false)} />
     </>
   );
