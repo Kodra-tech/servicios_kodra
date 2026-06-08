@@ -151,9 +151,35 @@ section { padding: 6rem 2rem; }
 /* HABILIDADES - Píldoras Amigables */
 .skills { background: var(--bg2); }
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; }
-.skill-pill { background: var(--bg); border: 1px solid var(--border); border-radius: 100px; padding: 0.8rem 1rem; font-size: 0.9rem; font-weight: 500; text-align: center; color: var(--muted); transition: all .2s; }
+.skill-pill { background: var(--bg); border: 1px solid var(--border); border-radius: 100px; padding: 0.8rem 1rem; font-size: 0.9rem; font-weight: 500; text-align: center; color: var(--muted); transition: all .2s; position: relative; }
 .skill-pill:hover { color: var(--text); background: var(--hover-bg); transform: scale(1.05); }
 .skill-pill.featured { color: var(--accent); border-color: var(--accent-soft); background: var(--accent-soft); }
+
+/* Tooltip (Mini Layout) */
+.skill-pill::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg2);
+  color: var(--text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 50;
+}
+.skill-pill:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
 /* CONTACTO - Formulario Suave */
 .contacto-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
