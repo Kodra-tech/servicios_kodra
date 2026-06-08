@@ -9,11 +9,11 @@ export default function HeroSection() {
       <div className="hero-inner reveal">
         <div className="hero-badge">Disponible para proyectos</div>
         <h1>
-          Desarrollo Web<br />
-          <span className="line2">Profesional</span>
+          Software &<br />
+          <span className="line2">Infraestructura</span>
         </h1>
         <p className="hero-sub">
-          Construimos páginas web y sistemas para <span>negocios locales</span> — rápidas, modernas y con base de datos incluida. Basados en <span>México</span>.
+          Desarrollamos sistemas a la medida y blindamos tu infraestructura de red con <span>soluciones de ciberseguridad</span>. Basados en <span>México</span>.
         </p>
         <div className="hero-ctas">
           <a href="#proyectos" className="btn btn-primary">Ver proyectos</a>

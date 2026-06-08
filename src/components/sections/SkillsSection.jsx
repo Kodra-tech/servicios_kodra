@@ -21,6 +21,10 @@ export default function SkillsSection() {
           <div className="skill-pill reveal">APIs REST</div>
           <div className="skill-pill reveal">Diseño Adaptativo</div>
           <div className="skill-pill reveal">SEO Técnico</div>
+          <div className="skill-pill featured reveal">Ciberseguridad</div>
+          <div className="skill-pill featured reveal">VPN & Firewalls</div>
+          <div className="skill-pill reveal">Active Directory</div>
+          <div className="skill-pill reveal">Wi-Fi 802.1X</div>
         </div>
       </div>
     </section>

@@ -120,6 +120,62 @@ export default function ProjectsSection() {
               </div>
             </div>
 
+            {/* PROYECTO 4: RED CORPORATIVA */}
+            <div className="proyecto-card reveal">
+              <div>
+                <div className="proyecto-tags">
+                  <span className="tag">CISCO</span>
+                  <span className="tag">802.1X</span>
+                  <span className="tag">Wi-Fi</span>
+                </div>
+                <h3>Implementación Wi-Fi Corporativo</h3>
+                <p>Despliegue de red inalámbrica de alta densidad para oficinas corporativas. Autenticación segura RADIUS/802.1X, segmentación de VLANs y portal cautivo para invitados.</p>
+              </div>
+              <div className="proyecto-mockup server-mockup">
+                <div className="server-rack">
+                  <div className="server-unit blinking-leds">
+                    <span className="led green"></span>
+                    <span className="led green"></span>
+                    <span className="led red blink"></span>
+                  </div>
+                  <div className="server-unit">
+                    <span className="led green"></span>
+                    <span className="led green"></span>
+                  </div>
+                  <div className="server-unit network-switch">
+                     <div className="ports">
+                       <span></span><span></span><span></span><span></span>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* PROYECTO 5: CIBERSEGURIDAD / VPN */}
+            <div className="proyecto-card reveal">
+              <div>
+                <div className="proyecto-tags">
+                  <span className="tag">Fortinet</span>
+                  <span className="tag">IPsec VPN</span>
+                  <span className="tag">Hardening</span>
+                </div>
+                <h3>Ciberseguridad y VPN Site-to-Site</h3>
+                <p>Interconexión segura entre sucursal matriz y almacenes mediante túneles IPsec. Hardening de firewalls perimetrales y monitoreo de amenazas en tiempo real.</p>
+              </div>
+              <div className="proyecto-mockup terminal-mockup">
+                <div className="terminal-header">
+                  <span className="dot"></span><span className="dot"></span><span className="dot"></span>
+                </div>
+                <div className="terminal-body">
+                  <div className="term-line cmd">ping 10.0.5.1</div>
+                  <div className="term-line res">Reply from 10.0.5.1: bytes=32 time=12ms</div>
+                  <div className="term-line res">Reply from 10.0.5.1: bytes=32 time=14ms</div>
+                  <div className="term-line cmd">ipsec status</div>
+                  <div className="term-line res highlight">Tunnel [ACTIVE] - Secure</div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
