@@ -277,13 +277,20 @@ function CajaScreen() {
 function ReportesScreen() {
   const { t, language } = useLanguage();
 
-  const rows = [
+  const rows = language === "es" ? [
     { date: "21/04/2026", sessions: 6, sales: "$2,779", tip: "$51.8", total: "$2,830.8", bar: 28 },
     { date: "25/04/2026", sessions: 21, sales: "$9,799", tip: "$306.55", total: "$10,105.55", bar: 100 },
     { date: "02/05/2026", sessions: 25, sales: "$13,175", tip: "$682.95", total: "$13,857.95", bar: 100 },
     { date: "09/05/2026", sessions: 29, sales: "$14,992", tip: "$783.4", total: "$15,775.4", bar: 100 },
     { date: "10/05/2026", sessions: 18, sales: "$9,978", tip: "$569.65", total: "$10,547.65", bar: 95 },
     { date: "15/05/2026", sessions: 8, sales: "$3,204", tip: "$196.2", total: "$3,400.2", bar: 34 },
+  ] : [
+    { date: "21/04/2026", sessions: 6, sales: "$138.95", tip: "$20.84", total: "$159.79", bar: 28 },
+    { date: "25/04/2026", sessions: 21, sales: "$489.95", tip: "$73.49", total: "$563.44", bar: 100 },
+    { date: "02/05/2026", sessions: 25, sales: "$658.75", tip: "$98.81", total: "$757.56", bar: 100 },
+    { date: "09/05/2026", sessions: 29, sales: "$749.60", tip: "$112.44", total: "$862.04", bar: 100 },
+    { date: "10/05/2026", sessions: 18, sales: "$498.90", tip: "$74.84", total: "$573.74", bar: 95 },
+    { date: "15/05/2026", sessions: 8, sales: "$160.20", tip: "$24.03", total: "$184.23", bar: 34 },
   ];
 
   const sidebarItems = [
@@ -320,9 +327,9 @@ function ReportesScreen() {
         {/* Stat cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }}>
           {[
-            { label: t("demoModal", "tot_sales"), value: "$223,675", color: "#22c55e" },
-            { label: t("demoModal", "tot_tip"), value: "$12,486.1", color: "#3b82f6" },
-            { label: t("demoModal", "avg_ticket"), value: "$510.67", color: "#f59e0b" },
+            { label: t("demoModal", "tot_sales"), value: language === "es" ? "$223,675" : "$11,183.75", color: "#22c55e" },
+            { label: t("demoModal", "tot_tip"), value: language === "es" ? "$12,486.1" : "$1,872.90", color: "#3b82f6" },
+            { label: t("demoModal", "avg_ticket"), value: language === "es" ? "$510.67" : "$25.53", color: "#f59e0b" },
             { label: t("demoModal", "sessions_closed"), value: "438", color: "#a855f7" },
           ].map((s) => (
             <div key={s.label} style={{ background: "#fff", border: "1px solid #eee", borderRadius: 8, padding: "8px 10px" }}>

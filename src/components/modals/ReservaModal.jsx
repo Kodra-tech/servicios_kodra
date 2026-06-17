@@ -4,7 +4,7 @@ import { useLanguage } from "../../context/LanguageContext";
 
 export default function ReservaModal({ isOpen, onClose }) {
   const [tourStep, setTourStep] = useState(1);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className={`modal-overlay ${isOpen ? "open" : ""}`} onClick={onClose}>
@@ -85,7 +85,7 @@ export default function ReservaModal({ isOpen, onClose }) {
                   </div>
                   <div className="im-card">
                     <div className="im-card-label">{t("reservaModal", "ingresos")}</div>
-                    <div className="im-card-value">$8,500</div>
+                    <div className="im-card-value">{language === "es" ? "$8,500" : "$850"}</div>
                   </div>
                 </div>
                 
