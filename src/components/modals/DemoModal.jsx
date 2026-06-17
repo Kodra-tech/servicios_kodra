@@ -22,23 +22,23 @@ function MenuScreen() {
       name: t("demoModal", "tacos"),
       count: 3,
       items: [
-        { name: t("demoModal", "taco_bistec"), price: "$35.00", active: true },
-        { name: t("demoModal", "taco_pastor"), price: "$32.00", tag: t("demoModal", "tag_picante"), active: true },
-        { name: t("demoModal", "taco_pollo"), price: "$30.00", tag: t("demoModal", "tag_vegetariano"), active: false },
+        { name: t("demoModal", "taco_bistec"), price: t("demoModal", "taco_bistec_price"), active: true },
+        { name: t("demoModal", "taco_pastor"), price: t("demoModal", "taco_pastor_price"), tag: t("demoModal", "tag_picante"), active: true },
+        { name: t("demoModal", "taco_pollo"), price: t("demoModal", "taco_pollo_price"), tag: t("demoModal", "tag_vegetariano"), active: false },
       ],
     },
     {
       name: t("demoModal", "bebidas"),
       count: 2,
       items: [
-        { name: t("demoModal", "agua_fresca"), price: "$25.00", active: true },
-        { name: t("demoModal", "refresco"), price: "$30.00", active: true },
+        { name: t("demoModal", "agua_fresca"), price: t("demoModal", "agua_fresca_price"), active: true },
+        { name: t("demoModal", "refresco"), price: t("demoModal", "refresco_price"), active: true },
       ],
     },
     {
       name: t("demoModal", "postres"),
       count: 1,
-      items: [{ name: t("demoModal", "churros"), price: "$55.00", active: false }],
+      items: [{ name: t("demoModal", "churros"), price: t("demoModal", "churros_price"), active: false }],
     },
   ];
 
@@ -264,7 +264,7 @@ function CajaScreen() {
             <span style={{ color: "#22c55e", fontSize: 9, background: "#f0fdf4", padding: "1px 6px", borderRadius: 10 }}>{t("demoModal", "table_status_active")}</span>
           </div>
           <div style={{ color: "#999", fontSize: 9, marginBottom: 6 }}>⏱ 5h 0m</div>
-          <div style={{ fontWeight: 700, fontSize: 20, color: "#111", marginBottom: 8 }}>$125.00</div>
+          <div style={{ fontWeight: 700, fontSize: 20, color: "#111", marginBottom: 8 }}>{t("demoModal", "caja_total")}</div>
           <div style={{ border: "1px solid #eee", borderRadius: 6, padding: "5px 0", textAlign: "center", fontSize: 10, color: "#555", cursor: "default" }}>
             {t("demoModal", "view_bill")}
           </div>
@@ -362,16 +362,16 @@ function ClienteScreen() {
   
   const items = {
     [t("demoModal", "tacos")]: [
-      { name: t("demoModal", "taco_bistec"), desc: t("demoModal", "steak_desc"), price: "$35", time: "10 min" },
-      { name: t("demoModal", "taco_pastor"), desc: t("demoModal", "pastor_desc"), price: "$32", time: "10 min", tag: language === "es" ? "Picante" : "Spicy" },
-      { name: t("demoModal", "taco_pollo"), desc: t("demoModal", "pollo_desc"), price: "$30", time: "8 min", tag: language === "es" ? "Vegetariano" : "Vegetarian" },
+      { name: t("demoModal", "taco_bistec"), desc: t("demoModal", "steak_desc"), price: t("demoModal", "client_bistec_price"), time: "10 min" },
+      { name: t("demoModal", "taco_pastor"), desc: t("demoModal", "pastor_desc"), price: t("demoModal", "client_pastor_price"), time: "10 min", tag: language === "es" ? "Picante" : "Spicy" },
+      { name: t("demoModal", "taco_pollo"), desc: t("demoModal", "pollo_desc"), price: t("demoModal", "client_pollo_price"), time: "8 min", tag: language === "es" ? "Vegetariano" : "Vegetarian" },
     ],
     [t("demoModal", "bebidas")]: [
-      { name: t("demoModal", "agua_fresca"), desc: t("demoModal", "agua_desc"), price: "$25", time: "2 min" },
-      { name: t("demoModal", "refresco"), desc: t("demoModal", "refresco_desc"), price: "$30", time: "1 min" },
+      { name: t("demoModal", "agua_fresca"), desc: t("demoModal", "agua_desc"), price: t("demoModal", "client_agua_price"), time: "2 min" },
+      { name: t("demoModal", "refresco"), desc: t("demoModal", "refresco_desc"), price: t("demoModal", "client_refresco_price"), time: "1 min" },
     ],
     [t("demoModal", "postres")]: [
-      { name: t("demoModal", "churros"), desc: t("demoModal", "churros_desc"), price: "$55", time: "8 min" },
+      { name: t("demoModal", "churros"), desc: t("demoModal", "churros_desc"), price: t("demoModal", "client_churros_price"), time: "8 min" },
     ],
   };
 

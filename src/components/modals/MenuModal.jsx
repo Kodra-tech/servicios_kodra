@@ -56,7 +56,7 @@ export default function MenuModal({ isOpen, onClose }) {
                     <div className="food-desc">{t("menuModal", "dish1_desc")}</div>
                   </div>
                   <div className="food-footer">
-                    <div className="food-price">$185.00</div>
+                    <div className="food-price">{t("menuModal", "dish1_price")}</div>
                     <div className="food-add">+</div>
                   </div>
                 </div>
@@ -70,7 +70,7 @@ export default function MenuModal({ isOpen, onClose }) {
                     <div className="food-desc">{t("menuModal", "dish2_desc")}</div>
                   </div>
                   <div className="food-footer">
-                    <div className="food-price">$220.00</div>
+                    <div className="food-price">{t("menuModal", "dish2_price")}</div>
                     <div className="food-add">+</div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export default function MenuModal({ isOpen, onClose }) {
                     <div className="food-desc">{t("menuModal", "dish3_desc")}</div>
                   </div>
                   <div className="food-footer">
-                    <div className="food-price">$95.00</div>
+                    <div className="food-price">{t("menuModal", "dish3_price")}</div>
                     <div className="food-add">+</div>
                   </div>
                 </div>

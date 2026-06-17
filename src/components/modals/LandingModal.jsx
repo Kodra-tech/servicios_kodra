@@ -59,7 +59,7 @@ export default function LandingModal({ isOpen, onClose }) {
                     <div className="spa-s-name">{t("landingModal", "m_service1_name")}</div>
                     <div className="spa-s-desc">{t("landingModal", "m_service1_desc")}</div>
                   </div>
-                  <div className="spa-s-price">$850</div>
+                  <div className="spa-s-price">{t("landingModal", "m_service1_price")}</div>
                 </div>
 
                 <div className="spa-service-card">
@@ -68,7 +68,7 @@ export default function LandingModal({ isOpen, onClose }) {
                     <div className="spa-s-name">{t("landingModal", "m_service2_name")}</div>
                     <div className="spa-s-desc">{t("landingModal", "m_service2_desc")}</div>
                   </div>
-                  <div className="spa-s-price">$600</div>
+                  <div className="spa-s-price">{t("landingModal", "m_service2_price")}</div>
                 </div>
 
                 <div className="spa-service-card">
@@ -77,7 +77,7 @@ export default function LandingModal({ isOpen, onClose }) {
                     <div className="spa-s-name">{t("landingModal", "m_service3_name")}</div>
                     <div className="spa-s-desc">{t("landingModal", "m_service3_desc")}</div>
                   </div>
-                  <div className="spa-s-price">$350</div>
+                  <div className="spa-s-price">{t("landingModal", "m_service3_price")}</div>
                 </div>
               </div>
             </div>

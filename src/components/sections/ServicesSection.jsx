@@ -33,28 +33,28 @@ export default function ServicesSection() {
               <div className="servicio-num">01</div>
               <h3>{t("services", "sw1_title")}</h3>
               <p>{t("services", "sw1_desc")}</p>
-              <div className="servicio-precio">{t("services", "desde")} $2,500 MXN</div>
+              <div className="servicio-precio">{t("services", "sw1_price")}</div>
             </div>
 
             <div className="servicio-card">
               <div className="servicio-num">02</div>
               <h3>{t("services", "sw2_title")}</h3>
               <p>{t("services", "sw2_desc")}</p>
-              <div className="servicio-precio">{t("services", "desde")} $800 MXN</div>
+              <div className="servicio-precio">{t("services", "sw2_price")}</div>
             </div>
 
             <div className="servicio-card">
               <div className="servicio-num">03</div>
               <h3>{t("services", "sw3_title")}</h3>
               <p>{t("services", "sw3_desc")}</p>
-              <div className="servicio-precio">{t("services", "desde")} $3,500 MXN</div>
+              <div className="servicio-precio">{t("services", "sw3_price")}</div>
             </div>
 
             <div className="servicio-card">
               <div className="servicio-num">04</div>
               <h3>{t("services", "sw4_title")}</h3>
               <p>{t("services", "sw4_desc")}</p>
-              <div className="servicio-precio">{t("services", "desde")} $1,800 MXN</div>
+              <div className="servicio-precio">{t("services", "sw4_price")}</div>
             </div>
           </div>
         )}
