@@ -1,26 +1,22 @@
-/**
- * @file ProjectsSection.jsx
- * @description Sección de Portafolio / Casos de Éxito. 
- * Maneja el estado de los 3 modales interactivos e importa sus respectivos componentes.
- */
-
 "use client";
 import { useState } from "react";
 import ReservaModal from "../modals/ReservaModal";
 import DemoModal from "../modals/DemoModal";
 import LandingModal from "../modals/LandingModal";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function ProjectsSection() {
   const [isReservaModalOpen, setIsReservaModalOpen] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isLandingModalOpen, setIsLandingModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
       <section id="proyectos">
         <div className="section-inner">
-          <div className="section-label reveal">Nuestro trabajo</div>
-          <h2 className="section-title reveal">Casos de Éxito</h2>
+          <div className="section-label reveal">{t("projects", "label")}</div>
+          <h2 className="section-title reveal">{t("projects", "title")}</h2>
           <div className="proyectos-grid">
             
             {/* PROYECTO 1: SISTEMA DE RESERVAS */}
@@ -31,14 +27,14 @@ export default function ProjectsSection() {
                   <span className="tag">PostgreSQL</span>
                   <span className="tag">Fullstack</span>
                 </div>
-                <h3>Sistema de reservas — Consultorio</h3>
-                <p>Plataforma para agendar citas automatizadas. El sistema envía notificaciones, guarda el historial médico y permite al doctor gestionar todo desde un panel privado.</p>
+                <h3>{t("projects", "p1_title")}</h3>
+                <p>{t("projects", "p1_desc")}</p>
                 <button 
                   onClick={(e) => { e.preventDefault(); setIsReservaModalOpen(true); }} 
                   className="proyecto-link" 
                   style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}
                 >
-                  Ver demostración interactiva →
+                  {t("projects", "btn_demo")}
                 </button>
               </div>
               <div className="proyecto-mockup dashboard-mockup">
@@ -65,14 +61,14 @@ export default function ProjectsSection() {
                   <span className="tag">QR</span>
                   <span className="tag">Móvil</span>
                 </div>
-                <h3>Menú inteligente para Restaurante</h3>
-                <p>Una experiencia web súper ligera donde los comensales escanean un código QR para explorar el menú actualizado en tiempo real sin instalar aplicaciones.</p>
+                <h3>{t("projects", "p2_title")}</h3>
+                <p>{t("projects", "p2_desc")}</p>
                 <button 
                   onClick={(e) => { e.preventDefault(); setIsDemoModalOpen(true); }} 
                   className="proyecto-link" 
                   style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}
                 >
-                  Ver demostración interactiva →
+                  {t("projects", "btn_demo")}
                 </button>
               </div>
               <div className="proyecto-mockup mobile-mockup">
@@ -94,14 +90,14 @@ export default function ProjectsSection() {
                   <span className="tag">SEO</span>
                   <span className="tag">Ventas</span>
                 </div>
-                <h3>Landing page — Salón de Belleza</h3>
-                <p>Página enfocada en conversiones. Atrae tráfico local, muestra galerías interactivas y facilita la reserva de servicios a través de WhatsApp de forma directa.</p>
+                <h3>{t("projects", "p3_title")}</h3>
+                <p>{t("projects", "p3_desc")}</p>
                 <button 
                   onClick={(e) => { e.preventDefault(); setIsLandingModalOpen(true); }} 
                   className="proyecto-link" 
                   style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontFamily: 'inherit' }}
                 >
-                  Ver demostración interactiva →
+                  {t("projects", "btn_demo")}
                 </button>
               </div>
               <div className="proyecto-mockup browser-mockup">
@@ -128,8 +124,8 @@ export default function ProjectsSection() {
                   <span className="tag">802.1X</span>
                   <span className="tag">Wi-Fi</span>
                 </div>
-                <h3>Implementación Wi-Fi Corporativo</h3>
-                <p>Despliegue de red inalámbrica de alta densidad para oficinas corporativas. Autenticación segura RADIUS/802.1X, segmentación de VLANs y portal cautivo para invitados.</p>
+                <h3>{t("projects", "p4_title")}</h3>
+                <p>{t("projects", "p4_desc")}</p>
               </div>
               <div className="proyecto-mockup server-mockup">
                 <div className="server-rack">
@@ -159,8 +155,8 @@ export default function ProjectsSection() {
                   <span className="tag">IPsec VPN</span>
                   <span className="tag">Hardening</span>
                 </div>
-                <h3>Ciberseguridad y VPN Site-to-Site</h3>
-                <p>Interconexión segura entre sucursal matriz y almacenes mediante túneles IPsec. Hardening de firewalls perimetrales y monitoreo de amenazas en tiempo real.</p>
+                <h3>{t("projects", "p5_title")}</h3>
+                <p>{t("projects", "p5_desc")}</p>
               </div>
               <div className="proyecto-mockup terminal-mockup">
                 <div className="terminal-header">

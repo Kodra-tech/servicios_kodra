@@ -1,14 +1,10 @@
-/**
- * @file ReservaModal.jsx
- * @description Modal interactivo para el "Sistema de Reservas". 
- * Utiliza un tour de 3 pasos para demostrar las capacidades del sistema.
- */
-
 "use client";
 import { useState } from "react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function ReservaModal({ isOpen, onClose }) {
   const [tourStep, setTourStep] = useState(1);
+  const { t } = useLanguage();
 
   return (
     <div className={`modal-overlay ${isOpen ? "open" : ""}`} onClick={onClose}>
@@ -17,59 +13,59 @@ export default function ReservaModal({ isOpen, onClose }) {
         
         <div className="modal-left">
           <div className="tour-nav">
-            <button className={`tour-tab ${tourStep === 1 ? 'active' : ''}`} onClick={() => setTourStep(1)}>1. Control</button>
-            <button className={`tour-tab ${tourStep === 2 ? 'active' : ''}`} onClick={() => setTourStep(2)}>2. Paciente</button>
-            <button className={`tour-tab ${tourStep === 3 ? 'active' : ''}`} onClick={() => setTourStep(3)}>3. Ajustes</button>
+            <button className={`tour-tab ${tourStep === 1 ? 'active' : ''}`} onClick={() => setTourStep(1)}>{t("reservaModal", "step1_tab")}</button>
+            <button className={`tour-tab ${tourStep === 2 ? 'active' : ''}`} onClick={() => setTourStep(2)}>{t("reservaModal", "step2_tab")}</button>
+            <button className={`tour-tab ${tourStep === 3 ? 'active' : ''}`} onClick={() => setTourStep(3)}>{t("reservaModal", "step3_tab")}</button>
           </div>
 
           {tourStep === 1 && (
             <div className="fade-enter" key="step1">
-              <span className="modal-badge">🔥 Panel del Doctor</span>
-              <h2 className="modal-title">El motor de citas que <span>multiplica</span> tus consultas</h2>
+              <span className="modal-badge">{t("reservaModal", "step1_badge")}</span>
+              <h2 className="modal-title">{t("reservaModal", "step1_title")}<span>{t("reservaModal", "step1_title_accent")}</span>{t("reservaModal", "step1_title_end")}</h2>
               <p className="modal-pain">
-                ¿Pierdes pacientes por no contestar WhatsApp a tiempo? ¿Tu asistente pasa horas cuadrando horarios?
+                {t("reservaModal", "step1_pain")}
               </p>
               <ul className="modal-benefits">
-                <li><strong>Recupera hasta 15 horas:</strong> Adiós a las llamadas para reagendar.</li>
-                <li><strong>Control total:</strong> Revisa tu agenda en tiempo real, estés donde estés.</li>
+                <li><strong>{t("reservaModal", "step1_benefit1")}</strong>{t("reservaModal", "step1_benefit1_sub")}</li>
+                <li><strong>{t("reservaModal", "step1_benefit2")}</strong>{t("reservaModal", "step1_benefit2_sub")}</li>
               </ul>
             </div>
           )}
 
           {tourStep === 2 && (
             <div className="fade-enter" key="step2">
-              <span className="modal-badge">📱 Fricción Cero</span>
-              <h2 className="modal-title">Tus pacientes reservan en <span>3 clics</span></h2>
+              <span className="modal-badge">{t("reservaModal", "step2_badge")}</span>
+              <h2 className="modal-title">{t("reservaModal", "step2_title")}<span>{t("reservaModal", "step2_title_accent")}</span>{t("reservaModal", "step2_title_end")}</h2>
               <p className="modal-pain">
-                La barrera número uno para conseguir pacientes nuevos es un proceso de reserva complicado.
+                {t("reservaModal", "step2_pain")}
               </p>
               <ul className="modal-benefits">
-                <li><strong>Sin descargar apps:</strong> Funciona directo desde WhatsApp, Instagram o tu web.</li>
-                <li><strong>100% Automático:</strong> El sistema da informes, muestra disponibilidad y agenda sin que intervengas.</li>
+                <li><strong>{t("reservaModal", "step2_benefit1")}</strong>{t("reservaModal", "step2_benefit1_sub")}</li>
+                <li><strong>{t("reservaModal", "step2_benefit2")}</strong>{t("reservaModal", "step2_benefit2_sub")}</li>
               </ul>
             </div>
           )}
 
           {tourStep === 3 && (
             <div className="fade-enter" key="step3">
-              <span className="modal-badge">⚙️ A tu medida</span>
-              <h2 className="modal-title">Tu negocio, <span>tus reglas</span></h2>
+              <span className="modal-badge">{t("reservaModal", "step3_badge")}</span>
+              <h2 className="modal-title">{t("reservaModal", "step3_title")}<span>{t("reservaModal", "step3_title_accent")}</span>{t("reservaModal", "step3_title_end")}</h2>
               <p className="modal-pain">
-                No te adaptes al software. El software debe adaptarse a la realidad de tu consultorio.
+                {t("reservaModal", "step3_pain")}
               </p>
               <ul className="modal-benefits">
-                <li><strong>Tu marca:</strong> Colores, logotipos y mensajes personalizados.</li>
-                <li><strong>Flexibilidad total:</strong> Configura descansos, horas de comida y duraciones por consulta.</li>
+                <li><strong>{t("reservaModal", "step3_benefit1")}</strong>{t("reservaModal", "step3_benefit1_sub")}</li>
+                <li><strong>{t("reservaModal", "step3_benefit2")}</strong>{t("reservaModal", "step3_benefit2_sub")}</li>
               </ul>
             </div>
           )}
 
           <div className="modal-cta-container">
             <a href="https://wa.me/5573253518?text=Hola,%20me%20interesa%20implementar%20el%20Sistema%20de%20Reservas%20en%20mi%20consultorio." target="_blank" rel="noreferrer" className="btn-pulse">
-              Implementar en mi Consultorio Hoy
+              {t("reservaModal", "btn_implement")}
             </a>
             <p className="modal-scarcity">
-              Atención personalizada: Solo implementamos 3 sistemas nuevos por mes.
+              {t("reservaModal", "scarcity")}
             </p>
           </div>
         </div>
@@ -78,41 +74,41 @@ export default function ReservaModal({ isOpen, onClose }) {
           {tourStep === 1 && (
             <div className="interactive-mockup fade-enter" key="mockup1">
               <div className="im-header">
-                <span className="im-title">Dr. Admin Panel</span>
-                <span className="im-status">● En línea</span>
+                <span className="im-title">{t("reservaModal", "panel_title")}</span>
+                <span className="im-status">{t("reservaModal", "status")}</span>
               </div>
               <div className="im-body">
                 <div className="im-stat-cards">
                   <div className="im-card">
-                    <div className="im-card-label">Citas Hoy</div>
+                    <div className="im-card-label">{t("reservaModal", "citas_hoy")}</div>
                     <div className="im-card-value">14</div>
                   </div>
                   <div className="im-card">
-                    <div className="im-card-label">Ingresos Est.</div>
+                    <div className="im-card-label">{t("reservaModal", "ingresos")}</div>
                     <div className="im-card-value">$8,500</div>
                   </div>
                 </div>
                 
                 <div className="im-appointments">
-                  <div className="im-appt-title">Próximos Pacientes</div>
+                  <div className="im-appt-title">{t("reservaModal", "proximos")}</div>
                   <div className="im-appt">
                     <div className="im-appt-info">
-                      <span className="im-appt-name">Ana M. (Primera vez)</span>
-                      <span className="im-appt-time">🕒 10:00 AM • Confirmado</span>
+                      <span className="im-appt-name">{t("reservaModal", "ana")}</span>
+                      <span className="im-appt-time">🕒 10:00 AM • {t("reservaModal", "confirmado")}</span>
                     </div>
                     <div className="im-appt-action">✓</div>
                   </div>
                   <div className="im-appt">
                     <div className="im-appt-info">
-                      <span className="im-appt-name">Carlos R. (Seguimiento)</span>
-                      <span className="im-appt-time">🕒 10:45 AM • Confirmado</span>
+                      <span className="im-appt-name">{t("reservaModal", "carlos")}</span>
+                      <span className="im-appt-time">🕒 10:45 AM • {t("reservaModal", "confirmado")}</span>
                     </div>
                     <div className="im-appt-action">✓</div>
                   </div>
                   <div className="im-appt">
                     <div className="im-appt-info">
-                      <span className="im-appt-name">Lucía T. (Limpieza)</span>
-                      <span className="im-appt-time">🕒 11:30 AM • Pendiente</span>
+                      <span className="im-appt-name">{t("reservaModal", "lucia")}</span>
+                      <span className="im-appt-time">🕒 11:30 AM • {t("reservaModal", "pendiente")}</span>
                     </div>
                     <div className="im-appt-action" style={{ background: "rgba(245, 158, 11, 0.1)", color: "#f59e0b" }}>⌛</div>
                   </div>
@@ -121,8 +117,8 @@ export default function ReservaModal({ isOpen, onClose }) {
               <div className="floating-notification">
                 <div className="fn-icon">🔔</div>
                 <div className="fn-content">
-                  <span className="fn-text">¡Nueva cita agendada!</span>
-                  <span className="fn-sub">Paciente: Roberto G. para Mañana 4:00 PM</span>
+                  <span className="fn-text">{t("reservaModal", "notif_title")}</span>
+                  <span className="fn-sub">{t("reservaModal", "notif_desc")}</span>
                 </div>
               </div>
             </div>
@@ -131,16 +127,16 @@ export default function ReservaModal({ isOpen, onClose }) {
           {tourStep === 2 && (
             <div className="patient-mockup fade-enter" key="mockup2">
               <div className="pm-header">
-                <div className="pm-avatar">Bot</div>
-                <div className="pm-name">Asistente Virtual</div>
+                <div className="pm-avatar">{t("reservaModal", "bot_avatar")}</div>
+                <div className="pm-name">{t("reservaModal", "bot_name")}</div>
               </div>
               <div className="pm-body">
-                <div className="pm-msg out">Hola, necesito agendar una cita.</div>
-                <div className="pm-msg">¡Hola! Claro que sí. ¿Para qué especialidad te gustaría agendar?</div>
+                <div className="pm-msg out">{t("reservaModal", "msg_patient")}</div>
+                <div className="pm-msg">{t("reservaModal", "msg_bot")}</div>
                 <div className="pm-msg btn-list">
-                  <button className="pm-action">Odontología General</button>
-                  <button className="pm-action">Ortodoncia</button>
-                  <button className="pm-action">Limpieza Dental</button>
+                  <button className="pm-action">{t("reservaModal", "opt1")}</button>
+                  <button className="pm-action">{t("reservaModal", "opt2")}</button>
+                  <button className="pm-action">{t("reservaModal", "opt3")}</button>
                 </div>
               </div>
             </div>
@@ -148,10 +144,10 @@ export default function ReservaModal({ isOpen, onClose }) {
 
           {tourStep === 3 && (
             <div className="settings-mockup fade-enter" key="mockup3">
-              <div className="sm-header">Configuración del Consultorio</div>
+              <div className="sm-header">{t("reservaModal", "sm_header")}</div>
               <div className="sm-body">
                 <div className="sm-group">
-                  <span className="sm-label">Colores de Marca</span>
+                  <span className="sm-label">{t("reservaModal", "brand_colors")}</span>
                   <div className="sm-color-picker">
                     <div className="sm-color active" style={{ background: "#E8003A" }}></div>
                     <div className="sm-color" style={{ background: "#10b981" }}></div>
@@ -160,17 +156,17 @@ export default function ReservaModal({ isOpen, onClose }) {
                   </div>
                 </div>
                 <div className="sm-group" style={{ marginTop: "1rem" }}>
-                  <span className="sm-label">Reglas y Horarios</span>
+                  <span className="sm-label">{t("reservaModal", "rules")}</span>
                   <div className="sm-toggle-row">
-                    <span>Aceptar pagos online</span>
+                    <span>{t("reservaModal", "rule1")}</span>
                     <div className="sm-toggle"></div>
                   </div>
                   <div className="sm-toggle-row">
-                    <span>Enviar recordatorio 24h</span>
+                    <span>{t("reservaModal", "rule2")}</span>
                     <div className="sm-toggle"></div>
                   </div>
                   <div className="sm-toggle-row">
-                    <span>Trabajar Domingos</span>
+                    <span>{t("reservaModal", "rule3")}</span>
                     <div className="sm-toggle off"></div>
                   </div>
                 </div>
@@ -179,10 +175,10 @@ export default function ReservaModal({ isOpen, onClose }) {
           )}
           <div className="mobile-cta-container">
             <a href="https://wa.me/5573253518?text=Hola,%20me%20interesa%20implementar%20el%20Sistema%20de%20Reservas%20en%20mi%20consultorio." target="_blank" rel="noreferrer" className="btn-pulse">
-              Implementar en mi Consultorio Hoy
+              {t("reservaModal", "btn_implement")}
             </a>
             <p className="modal-scarcity">
-              Atención personalizada: Solo implementamos 3 sistemas nuevos por mes.
+              {t("reservaModal", "scarcity")}
             </p>
           </div>
         </div>

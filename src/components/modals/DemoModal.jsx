@@ -1,42 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from "../../context/LanguageContext";
 
 const SCREENS = [
-  { id: "menu", label: "Menú", icon: "✦" },
-  { id: "mesas", label: "Mesas", icon: "⊞" },
-  { id: "cocina", label: "Cocina", icon: "◉" },
-  { id: "caja", label: "Caja", icon: "▣" },
-  { id: "reportes", label: "Reportes", icon: "↑" },
-  { id: "cliente", label: "Vista Cliente", icon: "◎" },
+  { id: "menu", icon: "✦" },
+  { id: "mesas", icon: "⊞" },
+  { id: "cocina", icon: "◉" },
+  { id: "caja", icon: "▣" },
+  { id: "reportes", icon: "↑" },
+  { id: "cliente", icon: "◎" },
 ];
 
 /* ─── Mockup screens ─────────────────────────────────────── */
 
 function MenuScreen() {
+  const { t, language } = useLanguage();
+  
   const categories = [
     {
-      name: "Tacos",
+      name: t("demoModal", "tacos"),
       count: 3,
       items: [
-        { name: "Taco de Bistec", price: "$35.00", active: true },
-        { name: "Taco de Pastor", price: "$32.00", tag: "picante", active: true },
-        { name: "Taco de Pollo", price: "$30.00", tag: "vegetariano", active: false },
+        { name: t("demoModal", "taco_bistec"), price: "$35.00", active: true },
+        { name: t("demoModal", "taco_pastor"), price: "$32.00", tag: t("demoModal", "tag_picante"), active: true },
+        { name: t("demoModal", "taco_pollo"), price: "$30.00", tag: t("demoModal", "tag_vegetariano"), active: false },
       ],
     },
     {
-      name: "Bebidas",
+      name: t("demoModal", "bebidas"),
       count: 2,
       items: [
-        { name: "Agua Fresca", price: "$25.00", active: true },
-        { name: "Refresco", price: "$30.00", active: true },
+        { name: t("demoModal", "agua_fresca"), price: "$25.00", active: true },
+        { name: t("demoModal", "refresco"), price: "$30.00", active: true },
       ],
     },
     {
-      name: "Postres",
+      name: t("demoModal", "postres"),
       count: 1,
-      items: [{ name: "Churros", price: "$55.00", active: false }],
+      items: [{ name: t("demoModal", "churros"), price: "$55.00", active: false }],
     },
+  ];
+
+  const sidebarItems = [
+    t("demoModal", "tab_menu"),
+    t("demoModal", "tab_mesas"),
+    t("demoModal", "tab_cocina"),
+    t("demoModal", "tab_caja"),
+    t("demoModal", "tab_reportes"),
+    language === "es" ? "Ajustes" : "Settings"
   ];
 
   return (
@@ -45,7 +57,7 @@ function MenuScreen() {
       <div style={{ width: 90, background: "#fff", borderRight: "1px solid #eee", padding: "10px 0", display: "flex", flexDirection: "column", gap: 2 }}>
         <div style={{ padding: "6px 10px", fontSize: 9, color: "#999", fontWeight: 600, letterSpacing: 1 }}>MENUKODRA</div>
         <div style={{ padding: "2px 10px", fontSize: 10, fontWeight: 700, color: "#111", marginBottom: 8 }}>Tacos Don Pepe</div>
-        {["Menú", "Mesas", "Cocina", "Caja", "Reportes", "Ajustes"].map((item, i) => (
+        {sidebarItems.map((item, i) => (
           <div key={item} style={{ padding: "5px 10px", background: i === 0 ? "#111" : "transparent", color: i === 0 ? "#fff" : "#555", borderRadius: 4, margin: "0 6px", cursor: "default", fontSize: 10 }}>
             {item}
           </div>
@@ -54,15 +66,15 @@ function MenuScreen() {
       {/* Content */}
       <div style={{ flex: 1, padding: 14, overflowY: "auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-          <span style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>Menú</span>
-          <div style={{ background: "#111", color: "#fff", padding: "4px 10px", borderRadius: 5, fontSize: 10, cursor: "default" }}>+ Nueva categoría</div>
+          <span style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>{t("demoModal", "tab_menu")}</span>
+          <div style={{ background: "#111", color: "#fff", padding: "4px 10px", borderRadius: 5, fontSize: 10, cursor: "default" }}>{t("demoModal", "new_category")}</div>
         </div>
         {categories.map((cat) => (
           <div key={cat.name} style={{ background: "#fff", border: "1px solid #eee", borderRadius: 8, marginBottom: 10, overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 10px", borderBottom: "1px solid #f0f0f0" }}>
               <span style={{ fontWeight: 600, color: "#111" }}>{cat.name}</span>
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={{ color: "#aaa", fontSize: 10 }}>{cat.count} platillos</span>
+                <span style={{ color: "#aaa", fontSize: 10 }}>{cat.count} {t("demoModal", "platillos")}</span>
                 <span style={{ color: "#bbb", cursor: "default" }}>✎</span>
                 <span style={{ color: "#ffaaaa", cursor: "default" }}>🗑</span>
               </div>
@@ -73,7 +85,7 @@ function MenuScreen() {
                 <div style={{ flex: 1 }}>
                   <span style={{ fontWeight: 500 }}>{item.name}</span>
                   {item.tag && (
-                    <span style={{ marginLeft: 5, background: item.tag === "picante" ? "#fff0f0" : "#f0fff4", color: item.tag === "picante" ? "#e55" : "#2a8", padding: "1px 5px", borderRadius: 3, fontSize: 9 }}>
+                    <span style={{ marginLeft: 5, background: item.tag === t("demoModal", "tag_picante") ? "#fff0f0" : "#f0fff4", color: item.tag === t("demoModal", "tag_picante") ? "#e55" : "#2a8", padding: "1px 5px", borderRadius: 3, fontSize: 9 }}>
                       {item.tag}
                     </span>
                   )}
@@ -86,7 +98,7 @@ function MenuScreen() {
                 <span style={{ color: "#ffaaaa", cursor: "default", fontSize: 10 }}>🗑</span>
               </div>
             ))}
-            <div style={{ padding: "5px 10px", color: "#888", fontSize: 10, cursor: "default" }}>+ Agregar platillo</div>
+            <div style={{ padding: "5px 10px", color: "#888", fontSize: 10, cursor: "default" }}>{t("demoModal", "add_platillo")}</div>
           </div>
         ))}
       </div>
@@ -95,17 +107,29 @@ function MenuScreen() {
 }
 
 function MesasScreen() {
+  const { t, language } = useLanguage();
+  
   const tables = [
-    { num: "#1", label: "Mesa 1", status: "Activa" },
-    { num: "#2", label: "Mesa 2", status: "Activa" },
-    { num: "#3", label: "Terraza 1", status: "Activa" },
+    { num: "#1", label: language === "es" ? "Mesa 1" : "Table 1", status: t("demoModal", "table_status_active") },
+    { num: "#2", label: language === "es" ? "Mesa 2" : "Table 2", status: t("demoModal", "table_status_active") },
+    { num: "#3", label: language === "es" ? "Terraza 1" : "Terrace 1", status: t("demoModal", "table_status_active") },
   ];
+
+  const sidebarItems = [
+    t("demoModal", "tab_menu"),
+    t("demoModal", "tab_mesas"),
+    t("demoModal", "tab_cocina"),
+    t("demoModal", "tab_caja"),
+    t("demoModal", "tab_reportes"),
+    language === "es" ? "Ajustes" : "Settings"
+  ];
+
   return (
     <div style={{ display: "flex", height: "100%", background: "#f9f9f9", color: "#111", fontFamily: "system-ui, sans-serif", fontSize: 11 }}>
       <div style={{ width: 90, background: "#fff", borderRight: "1px solid #eee", padding: "10px 0", display: "flex", flexDirection: "column", gap: 2 }}>
         <div style={{ padding: "6px 10px", fontSize: 9, color: "#999", fontWeight: 600, letterSpacing: 1 }}>MENUKODRA</div>
         <div style={{ padding: "2px 10px", fontSize: 10, fontWeight: 700, color: "#111", marginBottom: 8 }}>Tacos Don Pepe</div>
-        {["Menú", "Mesas", "Cocina", "Caja", "Reportes", "Ajustes"].map((item, i) => (
+        {sidebarItems.map((item, i) => (
           <div key={item} style={{ padding: "5px 10px", background: i === 1 ? "#111" : "transparent", color: i === 1 ? "#fff" : "#555", borderRadius: 4, margin: "0 6px", cursor: "default", fontSize: 10 }}>
             {item}
           </div>
@@ -113,19 +137,19 @@ function MesasScreen() {
       </div>
       <div style={{ flex: 1, padding: 14 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-          <span style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>Mesas</span>
-          <div style={{ background: "#111", color: "#fff", padding: "4px 10px", borderRadius: 5, fontSize: 10, cursor: "default" }}>+ Nueva mesa</div>
+          <span style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>{t("demoModal", "tab_mesas")}</span>
+          <div style={{ background: "#111", color: "#fff", padding: "4px 10px", borderRadius: 5, fontSize: 10, cursor: "default" }}>{t("demoModal", "new_table")}</div>
         </div>
         <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 8, overflow: "hidden" }}>
           <div style={{ display: "grid", gridTemplateColumns: "40px 1fr 80px 80px 80px", padding: "6px 12px", borderBottom: "1px solid #f0f0f0", color: "#999", fontWeight: 600, fontSize: 10 }}>
-            <span>Núm.</span><span>Etiqueta</span><span>Estado</span><span>QR</span><span>Acciones</span>
+            <span>{t("demoModal", "col_num")}</span><span>{t("demoModal", "col_label")}</span><span>{t("demoModal", "col_status")}</span><span>{t("demoModal", "col_qr")}</span><span>{t("demoModal", "col_actions")}</span>
           </div>
-          {tables.map((t) => (
-            <div key={t.num} style={{ display: "grid", gridTemplateColumns: "40px 1fr 80px 80px 80px", padding: "7px 12px", borderBottom: "1px solid #fafafa", alignItems: "center" }}>
-              <span style={{ fontWeight: 500 }}>{t.num}</span>
-              <span>{t.label}</span>
-              <span style={{ color: "#22c55e", background: "#f0fdf4", padding: "2px 7px", borderRadius: 10, fontSize: 9, display: "inline-block", width: "fit-content" }}>{t.status}</span>
-              <span style={{ color: "#555", fontSize: 10, cursor: "default" }}>⊞ Ver QR</span>
+          {tables.map((tItem) => (
+            <div key={tItem.num} style={{ display: "grid", gridTemplateColumns: "40px 1fr 80px 80px 80px", padding: "7px 12px", borderBottom: "1px solid #fafafa", alignItems: "center" }}>
+              <span style={{ fontWeight: 500 }}>{tItem.num}</span>
+              <span>{tItem.label}</span>
+              <span style={{ color: "#22c55e", background: "#f0fdf4", padding: "2px 7px", borderRadius: 10, fontSize: 9, display: "inline-block", width: "fit-content" }}>{tItem.status}</span>
+              <span style={{ color: "#555", fontSize: 10, cursor: "default" }}>{t("demoModal", "view_qr")}</span>
               <div style={{ display: "flex", gap: 6 }}>
                 <span style={{ color: "#888", cursor: "default" }}>✎</span>
                 <span style={{ color: "#ffaaaa", cursor: "default" }}>🗑</span>
@@ -139,16 +163,19 @@ function MesasScreen() {
 }
 
 function CocinaScreen() {
+  const { t, language } = useLanguage();
+  const tableLabel = language === "es" ? "Mesa 1" : "Table 1";
+
   return (
     <div style={{ height: "100%", background: "#0a0a0a", fontFamily: "system-ui, sans-serif", fontSize: 11, color: "#fff", padding: 12 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
         <div>
-          <div style={{ fontWeight: 700, fontSize: 13 }}>◉ Cocina</div>
+          <div style={{ fontWeight: 700, fontSize: 13 }}>◉ {t("demoModal", "tab_cocina")}</div>
           <div style={{ color: "#666", fontSize: 10 }}>Tacos Don Pepe</div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 10 }}>
           <div style={{ width: 7, height: 7, background: "#22c55e", borderRadius: "50%" }} />
-          <span style={{ color: "#22c55e" }}>En vivo</span>
+          <span style={{ color: "#22c55e" }}>{t("demoModal", "live")}</span>
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
@@ -156,22 +183,22 @@ function CocinaScreen() {
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
             <div style={{ width: 18, height: 18, background: "#f59e0b", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700 }}>1</div>
-            <span style={{ fontWeight: 600 }}>Recibidas</span>
+            <span style={{ fontWeight: 600 }}>{t("demoModal", "received")}</span>
           </div>
           <div style={{ background: "#7c3a00", borderRadius: 8, overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "space-between", padding: "7px 10px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
               <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                <span style={{ fontWeight: 700 }}>Mesa 1</span>
+                <span style={{ fontWeight: 700 }}>{tableLabel}</span>
                 <span style={{ color: "#aaa", fontSize: 9 }}>#2361</span>
               </div>
               <span style={{ color: "#aaa", fontSize: 9 }}>⏱ 2s</span>
             </div>
             <div style={{ padding: "8px 10px" }}>
-              <div style={{ display: "flex", gap: 6 }}><span style={{ color: "#aaa" }}>1×</span><span>Churros</span></div>
-              <div style={{ color: "#aaa", fontSize: 10, marginTop: 2, fontStyle: "italic" }}>&quot;con cajeta&quot;</div>
+              <div style={{ display: "flex", gap: 6 }}><span style={{ color: "#aaa" }}>1×</span><span>{t("demoModal", "churros")}</span></div>
+              <div style={{ color: "#aaa", fontSize: 10, marginTop: 2, fontStyle: "italic" }}>&quot;{t("demoModal", "churros_note")}&quot;</div>
             </div>
             <div style={{ background: "rgba(255,255,255,0.1)", margin: "0 8px 8px", borderRadius: 5, padding: "5px 0", textAlign: "center", cursor: "default", fontSize: 10 }}>
-              ⊙ Aceptar
+              {t("demoModal", "accept")}
             </div>
           </div>
         </div>
@@ -179,21 +206,21 @@ function CocinaScreen() {
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
             <div style={{ width: 18, height: 18, background: "#3b82f6", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700 }}>1</div>
-            <span style={{ fontWeight: 600 }}>En preparación</span>
+            <span style={{ fontWeight: 600 }}>{t("demoModal", "preparing")}</span>
           </div>
           <div style={{ background: "#1e3a6e", borderRadius: 8, overflow: "hidden" }}>
             <div style={{ display: "flex", justifyContent: "space-between", padding: "7px 10px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
               <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                <span style={{ fontWeight: 700 }}>Mesa 1</span>
+                <span style={{ fontWeight: 700 }}>{tableLabel}</span>
                 <span style={{ color: "#aaa", fontSize: 9 }}>#8C43</span>
               </div>
               <span style={{ color: "#aaa", fontSize: 9 }}>⏱ 24s</span>
             </div>
             <div style={{ padding: "8px 10px" }}>
-              <div style={{ display: "flex", gap: 6 }}><span style={{ color: "#aaa" }}>1×</span><span>Taco de Bistec</span></div>
+              <div style={{ display: "flex", gap: 6 }}><span style={{ color: "#aaa" }}>1×</span><span>{t("demoModal", "taco_bistec")}</span></div>
             </div>
             <div style={{ background: "rgba(255,255,255,0.1)", margin: "0 8px 8px", borderRadius: 5, padding: "5px 0", textAlign: "center", cursor: "default", fontSize: 10 }}>
-              ⊙ Marcar listo
+              {t("demoModal", "mark_ready")}
             </div>
           </div>
         </div>
@@ -203,12 +230,24 @@ function CocinaScreen() {
 }
 
 function CajaScreen() {
+  const { t, language } = useLanguage();
+  const tableLabel = language === "es" ? "Mesa 1" : "Table 1";
+  
+  const sidebarItems = [
+    t("demoModal", "tab_menu"),
+    t("demoModal", "tab_mesas"),
+    t("demoModal", "tab_cocina"),
+    t("demoModal", "tab_caja"),
+    t("demoModal", "tab_reportes"),
+    language === "es" ? "Ajustes" : "Settings"
+  ];
+
   return (
     <div style={{ display: "flex", height: "100%", background: "#f9f9f9", color: "#111", fontFamily: "system-ui, sans-serif", fontSize: 11 }}>
       <div style={{ width: 90, background: "#fff", borderRight: "1px solid #eee", padding: "10px 0", display: "flex", flexDirection: "column", gap: 2 }}>
         <div style={{ padding: "6px 10px", fontSize: 9, color: "#999", fontWeight: 600, letterSpacing: 1 }}>MENUKODRA</div>
         <div style={{ padding: "2px 10px", fontSize: 10, fontWeight: 700, color: "#111", marginBottom: 8 }}>Tacos Don Pepe</div>
-        {["Menú", "Mesas", "Cocina", "Caja", "Reportes", "Ajustes"].map((item, i) => (
+        {sidebarItems.map((item, i) => (
           <div key={item} style={{ padding: "5px 10px", background: i === 3 ? "#111" : "transparent", color: i === 3 ? "#fff" : "#555", borderRadius: 4, margin: "0 6px", cursor: "default", fontSize: 10 }}>
             {item}
           </div>
@@ -216,18 +255,18 @@ function CajaScreen() {
       </div>
       <div style={{ flex: 1, padding: 14 }}>
         <div style={{ marginBottom: 14 }}>
-          <div style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>Caja</div>
-          <div style={{ color: "#999", fontSize: 10 }}>Mesas activas y cobros pendientes</div>
+          <div style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>{t("demoModal", "caja_title")}</div>
+          <div style={{ color: "#999", fontSize: 10 }}>{t("demoModal", "caja_sub")}</div>
         </div>
         <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 10, padding: 12, width: 160 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
-            <span style={{ fontWeight: 600 }}>Mesa 1</span>
-            <span style={{ color: "#22c55e", fontSize: 9, background: "#f0fdf4", padding: "1px 6px", borderRadius: 10 }}>Activa</span>
+            <span style={{ fontWeight: 600 }}>{tableLabel}</span>
+            <span style={{ color: "#22c55e", fontSize: 9, background: "#f0fdf4", padding: "1px 6px", borderRadius: 10 }}>{t("demoModal", "table_status_active")}</span>
           </div>
           <div style={{ color: "#999", fontSize: 9, marginBottom: 6 }}>⏱ 5h 0m</div>
           <div style={{ fontWeight: 700, fontSize: 20, color: "#111", marginBottom: 8 }}>$125.00</div>
           <div style={{ border: "1px solid #eee", borderRadius: 6, padding: "5px 0", textAlign: "center", fontSize: 10, color: "#555", cursor: "default" }}>
-            ▣ Ver cuenta
+            {t("demoModal", "view_bill")}
           </div>
         </div>
       </div>
@@ -236,6 +275,8 @@ function CajaScreen() {
 }
 
 function ReportesScreen() {
+  const { t, language } = useLanguage();
+
   const rows = [
     { date: "21/04/2026", sessions: 6, sales: "$2,779", tip: "$51.8", total: "$2,830.8", bar: 28 },
     { date: "25/04/2026", sessions: 21, sales: "$9,799", tip: "$306.55", total: "$10,105.55", bar: 100 },
@@ -244,12 +285,22 @@ function ReportesScreen() {
     { date: "10/05/2026", sessions: 18, sales: "$9,978", tip: "$569.65", total: "$10,547.65", bar: 95 },
     { date: "15/05/2026", sessions: 8, sales: "$3,204", tip: "$196.2", total: "$3,400.2", bar: 34 },
   ];
+
+  const sidebarItems = [
+    t("demoModal", "tab_menu"),
+    t("demoModal", "tab_mesas"),
+    t("demoModal", "tab_cocina"),
+    t("demoModal", "tab_caja"),
+    t("demoModal", "tab_reportes"),
+    language === "es" ? "Ajustes" : "Settings"
+  ];
+
   return (
     <div style={{ display: "flex", height: "100%", background: "#f9f9f9", color: "#111", fontFamily: "system-ui, sans-serif", fontSize: 11, overflow: "hidden" }}>
       <div style={{ width: 90, background: "#fff", borderRight: "1px solid #eee", padding: "10px 0", display: "flex", flexDirection: "column", gap: 2, flexShrink: 0 }}>
         <div style={{ padding: "6px 10px", fontSize: 9, color: "#999", fontWeight: 600, letterSpacing: 1 }}>MENUKODRA</div>
         <div style={{ padding: "2px 10px", fontSize: 10, fontWeight: 700, color: "#111", marginBottom: 8 }}>Tacos Don Pepe</div>
-        {["Menú", "Mesas", "Cocina", "Caja", "Reportes", "Ajustes"].map((item, i) => (
+        {sidebarItems.map((item, i) => (
           <div key={item} style={{ padding: "5px 10px", background: i === 4 ? "#111" : "transparent", color: i === 4 ? "#fff" : "#555", borderRadius: 4, margin: "0 6px", cursor: "default", fontSize: 10 }}>
             {item}
           </div>
@@ -258,8 +309,8 @@ function ReportesScreen() {
       <div style={{ flex: 1, padding: 14, overflowY: "auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
           <div>
-            <div style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>Reportes</div>
-            <div style={{ color: "#999", fontSize: 10 }}>Ventas, platillos y ticket promedio</div>
+            <div style={{ fontWeight: 700, fontSize: 14, color: "#111" }}>{t("demoModal", "reportes_title")}</div>
+            <div style={{ color: "#999", fontSize: 10 }}>{t("demoModal", "reportes_sub")}</div>
           </div>
           <div style={{ display: "flex", gap: 6 }}>
             <div style={{ border: "1px solid #ddd", borderRadius: 5, padding: "3px 8px", fontSize: 10, cursor: "default", color: "#555" }}>↓ CSV</div>
@@ -269,10 +320,10 @@ function ReportesScreen() {
         {/* Stat cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }}>
           {[
-            { label: "Ventas totales", value: "$223,675", color: "#22c55e" },
-            { label: "Propina total", value: "$12,486.1", color: "#3b82f6" },
-            { label: "Ticket promedio", value: "$510.67", color: "#f59e0b" },
-            { label: "Sesiones cerradas", value: "438", color: "#a855f7" },
+            { label: t("demoModal", "tot_sales"), value: "$223,675", color: "#22c55e" },
+            { label: t("demoModal", "tot_tip"), value: "$12,486.1", color: "#3b82f6" },
+            { label: t("demoModal", "avg_ticket"), value: "$510.67", color: "#f59e0b" },
+            { label: t("demoModal", "sessions_closed"), value: "438", color: "#a855f7" },
           ].map((s) => (
             <div key={s.label} style={{ background: "#fff", border: "1px solid #eee", borderRadius: 8, padding: "8px 10px" }}>
               <div style={{ color: "#888", fontSize: 9, marginBottom: 3 }}>{s.label}</div>
@@ -283,7 +334,7 @@ function ReportesScreen() {
         {/* Table */}
         <div style={{ background: "#fff", border: "1px solid #eee", borderRadius: 8, overflow: "hidden" }}>
           <div style={{ display: "grid", gridTemplateColumns: "90px 50px 70px 70px 80px 60px", padding: "5px 10px", borderBottom: "1px solid #f0f0f0", color: "#999", fontWeight: 600, fontSize: 9 }}>
-            <span>Fecha</span><span>Ses.</span><span>Ventas</span><span>Propina</span><span>Total</span><span>Graf.</span>
+            <span>{t("demoModal", "col_date")}</span><span>{t("demoModal", "col_sessions")}</span><span>{t("demoModal", "col_sales")}</span><span>{t("demoModal", "col_tip")}</span><span>{t("demoModal", "col_total")}</span><span>{t("demoModal", "col_graph")}</span>
           </div>
           {rows.map((r) => (
             <div key={r.date} style={{ display: "grid", gridTemplateColumns: "90px 50px 70px 70px 80px 60px", padding: "5px 10px", borderBottom: "1px solid #fafafa", alignItems: "center" }}>
@@ -304,22 +355,31 @@ function ReportesScreen() {
 }
 
 function ClienteScreen() {
-  const [activeTab, setActiveTab] = useState("Tacos");
-  const tabs = ["Tacos", "Bebidas", "Postres"];
+  const { t, language } = useLanguage();
+  const tableLabel = language === "es" ? "Mesa 1" : "Table 1";
+  
+  const tabs = [t("demoModal", "tacos"), t("demoModal", "bebidas"), t("demoModal", "postres")];
+  
   const items = {
-    Tacos: [
-      { name: "Taco de Bistec", desc: "Bistec asado con cebolla y cilantro", price: "$35", time: "10 min" },
-      { name: "Taco de Pastor", desc: "Carne al pastor con piña y cebolla", price: "$32", time: "10 min", tag: "Picante" },
-      { name: "Taco de Pollo", desc: "Pollo a la plancha con guacamole", price: "$30", time: "8 min", tag: "Vegetariano" },
+    [t("demoModal", "tacos")]: [
+      { name: t("demoModal", "taco_bistec"), desc: t("demoModal", "steak_desc"), price: "$35", time: "10 min" },
+      { name: t("demoModal", "taco_pastor"), desc: t("demoModal", "pastor_desc"), price: "$32", time: "10 min", tag: language === "es" ? "Picante" : "Spicy" },
+      { name: t("demoModal", "taco_pollo"), desc: t("demoModal", "pollo_desc"), price: "$30", time: "8 min", tag: language === "es" ? "Vegetariano" : "Vegetarian" },
     ],
-    Bebidas: [
-      { name: "Agua Fresca", desc: "De temporada, natural", price: "$25", time: "2 min" },
-      { name: "Refresco", desc: "Lata fría", price: "$30", time: "1 min" },
+    [t("demoModal", "bebidas")]: [
+      { name: t("demoModal", "agua_fresca"), desc: t("demoModal", "agua_desc"), price: "$25", time: "2 min" },
+      { name: t("demoModal", "refresco"), desc: t("demoModal", "refresco_desc"), price: "$30", time: "1 min" },
     ],
-    Postres: [
-      { name: "Churros", desc: "Con cajeta y crema", price: "$55", time: "8 min" },
+    [t("demoModal", "postres")]: [
+      { name: t("demoModal", "churros"), desc: t("demoModal", "churros_desc"), price: "$55", time: "8 min" },
     ],
   };
+
+  const [activeTab, setActiveTab] = useState(t("demoModal", "tacos"));
+
+  useEffect(() => {
+    setActiveTab(t("demoModal", "tacos"));
+  }, [language]);
 
   return (
     <div style={{ height: "100%", background: "#fff", color: "#111", fontFamily: "system-ui, sans-serif", fontSize: 12, overflowY: "auto" }}>
@@ -329,7 +389,7 @@ function ClienteScreen() {
           <div style={{ width: 28, height: 28, background: "#f0f0f0", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🍽</div>
           <div>
             <div style={{ fontWeight: 700, fontSize: 12 }}>Tacos Don Pepe</div>
-            <div style={{ color: "#999", fontSize: 10 }}>Mesa 1</div>
+            <div style={{ color: "#999", fontSize: 10 }}>{tableLabel}</div>
           </div>
         </div>
         <span style={{ fontSize: 14 }}>🌙</span>
@@ -338,37 +398,37 @@ function ClienteScreen() {
       {/* Order status */}
       <div style={{ margin: "10px 14px", border: "1px solid #eee", borderRadius: 8, overflow: "hidden" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 10px", borderBottom: "1px solid #f5f5f5" }}>
-          <span style={{ fontWeight: 600, fontSize: 11 }}>Mis pedidos</span>
-          <span style={{ background: "#fff7ed", color: "#c2692a", padding: "2px 7px", borderRadius: 10, fontSize: 9 }}>● En proceso</span>
+          <span style={{ fontWeight: 600, fontSize: 11 }}>{t("demoModal", "my_orders")}</span>
+          <span style={{ background: "#fff7ed", color: "#c2692a", padding: "2px 7px", borderRadius: 10, fontSize: 9 }}>● {t("demoModal", "in_process")}</span>
         </div>
         <div style={{ padding: "7px 10px", background: "#f0fdf4", borderBottom: "1px solid #f5f5f5" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <span style={{ color: "#16a34a", fontWeight: 600, fontSize: 10 }}>✓ ¡Listo para recoger!</span>
+            <span style={{ color: "#16a34a", fontWeight: 600, fontSize: 10 }}>{t("demoModal", "ready_pickup")}</span>
             <span style={{ color: "#999", fontSize: 9 }}>11:42 a.m.</span>
           </div>
-          <div style={{ color: "#555", fontSize: 10, marginTop: 2 }}>• 1× Taco de Bistec</div>
+          <div style={{ color: "#555", fontSize: 10, marginTop: 2 }}>• 1× {t("demoModal", "taco_bistec")}</div>
         </div>
         <div style={{ padding: "7px 10px", background: "#fffbeb", borderBottom: "1px solid #f5f5f5" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <span style={{ color: "#d97706", fontWeight: 600, fontSize: 10 }}>🔥 Preparando…</span>
+            <span style={{ color: "#d97706", fontWeight: 600, fontSize: 10 }}>{t("demoModal", "preparing_status")}</span>
             <span style={{ color: "#999", fontSize: 9 }}>04:39 p.m.</span>
           </div>
-          <div style={{ color: "#555", fontSize: 10, marginTop: 2 }}>• 1× Taco de Bistec</div>
+          <div style={{ color: "#555", fontSize: 10, marginTop: 2 }}>• 1× {t("demoModal", "taco_bistec")}</div>
         </div>
         <div style={{ padding: "7px 10px" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <span style={{ color: "#888", fontSize: 10 }}>⏱ Recibido</span>
+            <span style={{ color: "#888", fontSize: 10 }}>{t("demoModal", "received_status")}</span>
             <span style={{ color: "#999", fontSize: 9 }}>04:39 p.m.</span>
           </div>
-          <div style={{ color: "#555", fontSize: 10, marginTop: 2 }}>• 1× Churros</div>
+          <div style={{ color: "#555", fontSize: 10, marginTop: 2 }}>• 1× {t("demoModal", "churros")}</div>
         </div>
       </div>
 
       {/* Category tabs */}
       <div style={{ display: "flex", gap: 6, padding: "0 14px", marginBottom: 6 }}>
-        {tabs.map((t) => (
-          <div key={t} onClick={() => setActiveTab(t)} style={{ padding: "4px 12px", borderRadius: 20, background: activeTab === t ? "#111" : "#f5f5f5", color: activeTab === t ? "#fff" : "#555", fontSize: 10, cursor: "pointer", fontWeight: activeTab === t ? 600 : 400 }}>
-            {t}
+        {tabs.map((tItem) => (
+          <div key={tItem} onClick={() => setActiveTab(tItem)} style={{ padding: "4px 12px", borderRadius: 20, background: activeTab === tItem ? "#111" : "#f5f5f5", color: activeTab === tItem ? "#fff" : "#555", fontSize: 10, cursor: "pointer", fontWeight: activeTab === tItem ? 600 : 400 }}>
+            {tItem}
           </div>
         ))}
       </div>
@@ -381,7 +441,7 @@ function ClienteScreen() {
               <div style={{ fontWeight: 600, fontSize: 11 }}>{item.name}</div>
               <div style={{ color: "#888", fontSize: 10, margin: "2px 0" }}>{item.desc}</div>
               {item.tag && (
-                <span style={{ background: item.tag === "Picante" ? "#fff0f0" : "#f0fff4", color: item.tag === "Picante" ? "#e55" : "#2a8", padding: "1px 6px", borderRadius: 3, fontSize: 9 }}>
+                <span style={{ background: item.tag === "Picante" || item.tag === "Spicy" ? "#fff0f0" : "#f0fff4", color: item.tag === "Picante" || item.tag === "Spicy" ? "#e55" : "#2a8", padding: "1px 6px", borderRadius: 3, fontSize: 9 }}>
                   {item.tag}
                 </span>
               )}
@@ -401,10 +461,10 @@ function ClienteScreen() {
       {/* Footer actions */}
       <div style={{ padding: "12px 14px", display: "flex", flexDirection: "column", gap: 8, marginTop: 8 }}>
         <div style={{ border: "1px solid #eee", borderRadius: 8, padding: "9px 0", textAlign: "center", fontWeight: 600, fontSize: 12, cursor: "default" }}>
-          Solicitar la cuenta
+          {t("demoModal", "req_bill")}
         </div>
         <div style={{ textAlign: "center", color: "#888", fontSize: 11, cursor: "default" }}>
-          🔔 Llamar al mesero
+          {t("demoModal", "call_waiter")}
         </div>
       </div>
     </div>
@@ -415,6 +475,7 @@ function ClienteScreen() {
 
 export default function DemoModal({ isOpen, onClose }) {
   const [activeScreen, setActiveScreen] = useState("menu");
+  const { t } = useLanguage();
 
   const renderScreen = () => {
     switch (activeScreen) {
@@ -425,6 +486,18 @@ export default function DemoModal({ isOpen, onClose }) {
       case "reportes": return <ReportesScreen />;
       case "cliente": return <ClienteScreen />;
       default: return <MenuScreen />;
+    }
+  };
+
+  const getScreenLabel = (id) => {
+    switch(id) {
+      case "menu": return t("demoModal", "tab_menu");
+      case "mesas": return t("demoModal", "tab_mesas");
+      case "cocina": return t("demoModal", "tab_cocina");
+      case "caja": return t("demoModal", "tab_caja");
+      case "reportes": return t("demoModal", "tab_reportes");
+      case "cliente": return t("demoModal", "tab_cliente");
+      default: return "";
     }
   };
 
@@ -445,12 +518,12 @@ export default function DemoModal({ isOpen, onClose }) {
 
         {/* Header */}
         <div style={{ padding: "22px 28px 0", flexShrink: 0 }}>
-          <span className="modal-badge">🖥 Plataforma Completa</span>
+          <span className="modal-badge">{t("demoModal", "badge")}</span>
           <h2 className="modal-title" style={{ marginBottom: 6 }}>
-            Todo lo que tu restaurante necesita, <span>en un solo lugar</span>
+            {t("demoModal", "title")}<span>{t("demoModal", "title_accent")}</span>{t("demoModal", "title_end")}
           </h2>
           <p style={{ color: "var(--muted)", fontSize: "0.9rem", marginBottom: 16, maxWidth: 560 }}>
-            Desde el menú digital hasta la cocina y la caja — gestiona todo tu restaurante en tiempo real sin complicaciones.
+            {t("demoModal", "desc")}
           </p>
 
           {/* Screen tabs */}
@@ -475,9 +548,9 @@ export default function DemoModal({ isOpen, onClose }) {
                 }}
               >
                 <span style={{ fontSize: "0.7rem" }}>{s.icon}</span>
-                {s.label}
+                {getScreenLabel(s.id)}
                 {s.id === "cliente" && (
-                  <span style={{ background: "#22c55e", color: "#fff", fontSize: "0.6rem", padding: "1px 5px", borderRadius: 8, marginLeft: 2 }}>Cliente</span>
+                  <span style={{ background: "#22c55e", color: "#fff", fontSize: "0.6rem", padding: "1px 5px", borderRadius: 8, marginLeft: 2 }}>{t("demoModal", "client_badge")}</span>
                 )}
               </button>
             ))}
@@ -522,16 +595,16 @@ export default function DemoModal({ isOpen, onClose }) {
         {/* Footer CTA */}
         <div style={{ borderTop: "1px solid #f0f0f0", padding: "14px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0, flexWrap: "wrap", gap: 10 }}>
           <p style={{ color: "var(--muted)", fontSize: "0.85rem", margin: 0 }}>
-            🎁 Prueba gratis 14 días · Sin tarjeta de crédito
+            {t("demoModal", "scarcity")}
           </p>
           <a
-            href="https://wa.me/5573253518?text=Hola,%20quiero%20ver%20una%20demo%20de%20Menukodra."
+            href={`https://wa.me/5573253518?text=${encodeURIComponent(t("demoModal", "wa_message"))}`}
             target="_blank"
             rel="noreferrer"
             className="btn-pulse"
             style={{ padding: "10px 22px", fontSize: "0.9rem" }}
           >
-            Solicitar Demo Personalizada
+            {t("demoModal", "btn_submit")}
           </a>
         </div>
       </div>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 52" width="210" height="52">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap');
+      .ln { fill: none; stroke: #E8003A; stroke-linecap: round; }
+      .ln-d1 { stroke-width: 1.5; opacity: 0.35; }
+      .ln-d2 { stroke-width: 1.5; opacity: 0.18; }
+      .ln-v  { stroke-width: 1.0; opacity: 0.18; }
+      .ln-h  { stroke-width: 1.0; opacity: 0.18; }
+      .dot { fill: #E8003A; }
+      .dot-tl, .dot-tr, .dot-bl, .dot-br { opacity: 0.9; }
+      .dot-tm, .dot-ml, .dot-mr, .dot-bm { opacity: 0.45; }
+      .dot-c { opacity: 1; }
+      .logo-name { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 26px; fill: #F0F0F8; letter-spacing: -1.2px; }
+      .logo-sub { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 8px; fill: #E8003A; letter-spacing: 2px; text-transform: uppercase; }
+    </style>
+  </defs>
+  
+  <g>
+    <line class="ln ln-d1" x1="10" y1="10" x2="42" y2="42" />
+    <line class="ln ln-d2" x1="42" y1="10" x2="10" y2="42" />
+    <line class="ln ln-v"  x1="26" y1="10" x2="26" y2="42" />
+    <line class="ln ln-h"  x1="10" y1="26" x2="42" y2="26" />
+    <circle class="dot dot-tl" cx="10" cy="10" r="3.5" />
+    <circle class="dot dot-tm" cx="26" cy="10" r="3.5" />
+    <circle class="dot dot-tr" cx="42" cy="10" r="3.5" />
+    <circle class="dot dot-ml" cx="10" cy="26" r="3.5" />
+    <circle class="dot dot-c"  cx="26" cy="26" r="6" />
+    <circle class="dot dot-mr" cx="42" cy="26" r="3.5" />
+    <circle class="dot dot-bl" cx="10" cy="42" r="3.5" />
+    <circle class="dot dot-bm" cx="26" cy="42" r="3.5" />
+    <circle class="dot dot-br" cx="42" cy="42" r="3.5" />
+  </g>
+
+  <text x="60" y="30" class="logo-name">kodra</text>
+  <text x="61" y="42" class="logo-sub">sistemas digitales</text>
+</svg>

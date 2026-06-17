@@ -33,6 +33,7 @@ import ServicesSection from "../components/sections/ServicesSection";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import SkillsSection from "../components/sections/SkillsSection";
 import ContactSection from "../components/sections/ContactSection";
+import { LanguageProvider } from "../context/LanguageContext";
 
 export default function Home() {
   /**
@@ -59,7 +60,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
       <HeroSection />
       <ServicesSection />
@@ -67,6 +68,7 @@ export default function Home() {
       <SkillsSection />
       <ContactSection />
       <Footer />
-    </>
+    </LanguageProvider>
   );
 }
+

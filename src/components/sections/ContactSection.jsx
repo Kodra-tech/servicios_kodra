@@ -1,11 +1,6 @@
-/**
- * @file ContactSection.jsx
- * @description Sección de contacto. Incluye el formulario de contacto y la lógica
- * para enviar un mensaje directo a WhatsApp y opcionalmente guardar en la base de datos.
- */
-
 "use client";
 import { useState } from "react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,14 +9,19 @@ export default function ContactSection() {
     mensaje: "",
   });
   const [status, setStatus] = useState("");
+  const { t, language } = useLanguage();
 
   const enviarWA = async (e) => {
     e.preventDefault();
-    setStatus("Enviando...");
+    setStatus(t("contact", "status_sending"));
 
-    const nombre = formData.nombre || "Sin nombre";
-    const contacto = formData.contacto || "Sin contacto";
-    const msg = formData.mensaje || "Sin mensaje";
+    const noName = language === "es" ? "Sin nombre" : "No name";
+    const noContact = language === "es" ? "Sin contacto" : "No contact";
+    const noMsg = language === "es" ? "Sin mensaje" : "No message";
+
+    const nombre = formData.nombre || noName;
+    const contacto = formData.contacto || noContact;
+    const msg = formData.mensaje || noMsg;
 
     try {
       // Guardar historial en la base de datos (Neon)
@@ -34,8 +34,13 @@ export default function ContactSection() {
       console.error("Error al guardar en BD", error);
     }
 
-    setStatus("Redirigiendo a WhatsApp...");
-    const texto = `Hola, me contacto desde tu portafolio.\n\nNombre: ${nombre}\nContacto: ${contacto}\n\nProyecto: ${msg}`;
+    setStatus(t("contact", "status_redirecting"));
+    const waTemplate = t("contact", "wa_text");
+    const texto = waTemplate
+      .replace("{nombre}", nombre)
+      .replace("{contacto}", contacto)
+      .replace("{mensaje}", msg);
+
     window.open(`https://wa.me/5573253518?text=${encodeURIComponent(texto)}`, "_blank");
     
     setTimeout(() => {
@@ -49,13 +54,13 @@ export default function ContactSection() {
       <div className="section-inner">
         <div className="contacto-inner">
           <div className="contacto-text reveal">
-            <div className="section-label">Hablemos</div>
-            <h2>¿Tienes un proyecto en mente?</h2>
-            <p>Envíanos los detalles. Nuestro equipo te responderá a la brevedad para asesorarte y ofrecerte la mejor solución tecnológica para tu negocio.</p>
+            <div className="section-label">{t("contact", "label")}</div>
+            <h2>{t("contact", "title")}</h2>
+            <p>{t("contact", "desc")}</p>
             <div className="contacto-links">
               <a href="https://wa.me/5573253518" className="contacto-link" target="_blank" rel="noreferrer">
                 <div className="link-icon">📱</div>
-                <span>WhatsApp — Contacto Inmediato</span>
+                <span>{t("contact", "wa_contact")}</span>
               </a>
               <a href="mailto:kodratech@proton.me" className="contacto-link">
                 <div className="link-icon">✉️</div>
@@ -67,38 +72,38 @@ export default function ContactSection() {
           <div className="contact-form reveal">
             <form onSubmit={enviarWA}>
               <div className="form-group">
-                <label>Tu Nombre o Empresa</label>
+                <label>{t("contact", "form_name")}</label>
                 <input 
                   type="text" 
-                  placeholder="Ej. Juan Pérez - Negocio X" 
+                  placeholder={t("contact", "form_name_placeholder")} 
                   value={formData.nombre}
                   onChange={(e) => setFormData({...formData, nombre: e.target.value})}
                   required
                 />
               </div>
               <div className="form-group">
-                <label>WhatsApp o Correo de contacto</label>
+                <label>{t("contact", "form_contact")}</label>
                 <input 
                   type="text" 
-                  placeholder="Ej. +52 55 1234 5678" 
+                  placeholder={t("contact", "form_contact_placeholder")} 
                   value={formData.contacto}
                   onChange={(e) => setFormData({...formData, contacto: e.target.value})}
                   required
                 />
               </div>
               <div className="form-group">
-                <label>Cuéntanos sobre tu proyecto</label>
+                <label>{t("contact", "form_message")}</label>
                 <textarea 
-                  placeholder="Quiero mejorar mi presencia web, requiero un sistema para..."
+                  placeholder={t("contact", "form_message_placeholder")}
                   value={formData.mensaje}
                   onChange={(e) => setFormData({...formData, mensaje: e.target.value})}
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} disabled={status === "Enviando..."}>
-                {status ? status : "Enviar a kodra →"}
+              <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} disabled={status === t("contact", "status_sending")}>
+                {status ? status : t("contact", "form_submit")}
               </button>
-              <p className="form-note">Tus datos están seguros. Se guardará tu solicitud y se abrirá WhatsApp para agilizar la comunicación.</p>
+              <p className="form-note">{t("contact", "form_note")}</p>
             </form>
           </div>
         </div>
@@ -106,3 +111,4 @@ export default function ContactSection() {
     </section>
   );
 }
+
